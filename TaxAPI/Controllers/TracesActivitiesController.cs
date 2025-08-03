@@ -68,28 +68,15 @@ namespace TaxAPI.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest("❌ Error: " + ex.Message);
+                return BadRequest("Error: " + ex.Message);
             }
         }
 
         [HttpPost("continueRequestConsoFile")] // Accepts CAPTCHA and continues
-        public async Task<IActionResult> ContinueAutomation([FromBody] TracesActivities model)
+        public async Task<IActionResult> ContinueRequestConsoFile([FromBody] TracesActivities model)
         {
-            ChromeOptions options = new ChromeOptions();
-            options.AddArgument("--start-maximized");
-
-            using var driver = new ChromeDriver(options);
-            driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
-
             try
             {
-                driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/login.xhtml?usr=Ded");
-
-                driver.FindElement(By.Id("userId")).SendKeys(model.UserName);
-                driver.FindElement(By.Id("psw")).SendKeys(model.Password);
-                driver.FindElement(By.Id("tanpan")).SendKeys(model.Tan);
-
-                await Task.Delay(1000);
                 driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
                 driver.FindElement(By.Id("clickLogin")).Click();
 
@@ -99,6 +86,7 @@ namespace TaxAPI.Controllers
 
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
                 wait.Until(d => d.FindElement(By.Id("finYr")));
+
 
                 new SelectElement(driver.FindElement(By.Id("finYr"))).SelectByText(model.FinancialYear);
                 new SelectElement(driver.FindElement(By.Id("frmType"))).SelectByText(model.FormType);
@@ -137,19 +125,136 @@ namespace TaxAPI.Controllers
 
                 wait.Until(d => d.FindElement(By.XPath("//*[contains(text(), 'Request submitted successfully')]")));
 
-                return Ok("✅ Request submitted successfully.");
+                return Ok("Request submitted successfully.");
             }
             catch (Exception ex)
             {
-                return BadRequest("⚠️ Automation failed: " + ex.Message);
+                return BadRequest("Automation failed: " + ex.Message);
             }
         }
 
-        // POST api/<TracesActivitiesController>
-        [HttpPost]
-        public void Post([FromBody] string value)
+        [HttpPost("continueRequest16")] // Accepts CAPTCHA and continues
+        public async Task<IActionResult> ContinueRequest16([FromBody] TracesActivities model)
         {
+            try
+            {
+                driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
+                driver.FindElement(By.Id("clickLogin")).Click();
+
+                await Task.Delay(10000);
+
+                driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/ded/download16.xhtml");
+
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                wait.Until(d => d.FindElement(By.Id("bulkfinYr")));
+
+
+                new SelectElement(driver.FindElement(By.Id("bulkfinYr"))).SelectByText(model.FinancialYear);
+
+                driver.FindElement(By.Id("bulkGo")).Click();
+                driver.FindElement(By.Id("j_id1972728517_7cc7de5f")).Click();
+
+                if (model.Validation_Mode == "with_dsc")
+                {
+                    driver.FindElement(By.Id("dsckyc")).Click();
+                }
+                else
+                {
+                    driver.FindElement(By.Id("search2")).Click();
+                    driver.FindElement(By.Id("normalkyc")).Click();
+                }
+
+                wait.Until(d => d.FindElement(By.Id("token")));
+
+                driver.FindElement(By.Id("token")).SendKeys(model.Token);
+
+                driver.FindElement(By.Id("bsr")).SendKeys(model.Challan.BSR);
+                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(model.Challan.Date);
+                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.ChallanSrNo.ToString());
+                driver.FindElement(By.Id("chlnamt")).SendKeys(model.Challan.Amount.ToString());
+                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.CdRecordNo);
+
+                driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
+                driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
+                driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
+                driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
+                driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
+                driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
+
+                driver.FindElement(By.Id("clickKYC")).Click();
+
+                wait.Until(d => d.FindElement(By.XPath("//*[contains(text(), 'Request submitted successfully')]")));
+
+                return Ok("Request submitted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Automation failed: " + ex.Message);
+            }
         }
+
+        [HttpPost("continueRequest16A")] // Accepts CAPTCHA and continues
+        public async Task<IActionResult> ContinueRequest16A([FromBody] TracesActivities model)
+        {
+            try
+            {
+                driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
+                driver.FindElement(By.Id("clickLogin")).Click();
+
+                await Task.Delay(10000);
+
+                driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/ded/download16a.xhtml");
+
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                wait.Until(d => d.FindElement(By.Id("bulkfinYr")));
+
+
+                new SelectElement(driver.FindElement(By.Id("bulkfinYr"))).SelectByText(model.FinancialYear);
+                new SelectElement(driver.FindElement(By.Id("bulkformType"))).SelectByText(model.FormType);
+                new SelectElement(driver.FindElement(By.Id("bulkquarter"))).SelectByText(model.Quarter);
+
+                driver.FindElement(By.Id("bulkGo")).Click();
+                driver.FindElement(By.Id("j_id1972728517_7cc7de5f")).Click();
+
+                if (model.Validation_Mode == "with_dsc")
+                {
+                    driver.FindElement(By.Id("dsckyc")).Click();
+                }
+                else
+                {
+                    driver.FindElement(By.Id("search2")).Click();
+                    driver.FindElement(By.Id("normalkyc")).Click();
+                }
+
+                wait.Until(d => d.FindElement(By.Id("token")));
+
+                driver.FindElement(By.Id("token")).SendKeys(model.Token);
+
+                driver.FindElement(By.Id("bsr")).SendKeys(model.Challan.BSR);
+                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(model.Challan.Date);
+                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.ChallanSrNo.ToString());
+                driver.FindElement(By.Id("chlnamt")).SendKeys(model.Challan.Amount.ToString());
+                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.CdRecordNo);
+
+                driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
+                driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
+                driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
+                driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
+                driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
+                driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
+
+                driver.FindElement(By.Id("clickKYC")).Click();
+
+                wait.Until(d => d.FindElement(By.XPath("//*[contains(text(), 'Request submitted successfully')]")));
+
+                return Ok("Request submitted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Automation failed: " + ex.Message);
+            }
+        }
+
 
         // PUT api/<TracesActivitiesController>/5
         [HttpPut("{id}")]
