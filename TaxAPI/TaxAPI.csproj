@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0-windows7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Content Include="EmailTemplates\24Q-Q4.txt" />
+	  <Content Include="EmailTemplates\26Q_3084b28f-0e8a-4107-8a00-3317d1036834.pdf" />
+	  <Content Include="EmailTemplates\email.png" />
+	  <Content Include="EmailTemplates\EmailOTP.html" />
+	  <Content Include="EmailTemplates\mail-image.png" />
+	  <Content Include="EmailTemplates\tax-vahanlogo.png" />
+	  <Content Include="ITRTemplate\26Q\challans_list.html" />
+	  <Content Include="ITRTemplate\26Q\challan_verification.html" />
+	  <Content Include="ITRTemplate\26Q\deductee_detail_first_table_header.html" />
+	  <Content Include="ITRTemplate\26Q\deductee_detail_first_table_list.html" />
+	  <Content Include="ITRTemplate\26Q\deductee_detail_section_header.html" />
+	  <Content Include="ITRTemplate\26Q\deductee_detail_section_list.html" />
+	  <Content Include="ITRTemplate\26Q\deductee_detail_verification.html" />
+	  <Content Include="ITRTemplate\26Q\deductor_first_detail.html" />
+	  <Content Include="ITRTemplate\26Q\deductor_second_detail.html" />
+	  <Content Include="ITRTemplate\26Q\deductor_third_detail.html" />
+	  <Content Include="ITRTemplate\26Q\Index.html" />
+	  <Content Include="ITRTemplate\27EQ\challans_list.html" />
+	  <Content Include="ITRTemplate\27EQ\challan_verification.html" />
+	  <Content Include="ITRTemplate\27EQ\deductee_detail_first_table_header.html" />
+	  <Content Include="ITRTemplate\27EQ\deductee_detail_first_table_list.html" />
+	  <Content Include="ITRTemplate\27EQ\deductee_detail_second_list.html" />
+	  <Content Include="ITRTemplate\27EQ\deductee_detail_second_table_header.html" />
+	  <Content Include="ITRTemplate\27EQ\deductee_detail_verification.html" />
+	  <Content Include="ITRTemplate\27EQ\deductor_first_detail.html" />
+	  <Content Include="ITRTemplate\27EQ\deductor_second_detail.html" />
+	  <Content Include="ITRTemplate\27EQ\deductor_third_detail.html" />
+	  <Content Include="ITRTemplate\27EQ\Index.html" />
+	  <Content Include="ITRTemplate\27Q\challans_list.html" />
+	  <Content Include="ITRTemplate\27Q\challan_verification.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_first_table_header.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_first_table_list.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_second_list.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_second_table_header.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_section_header.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_section_list.html" />
+	  <Content Include="ITRTemplate\27Q\deductee_detail_verification.html" />
+	  <Content Include="ITRTemplate\27Q\deductor_first_detail.html" />
+	  <Content Include="ITRTemplate\27Q\deductor_second_detail.html" />
+	  <Content Include="ITRTemplate\27Q\deductor_third_detail.html" />
+	  <Content Include="ITRTemplate\27Q\Index.html" />
+	  <Content Include="ITRTemplate\index.html" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Aspose.Words" Version="24.12.0" />
+		<PackageReference Include="ClosedXML" Version="0.95.2" />
+		<PackageReference Include="DinkToPdf" Version="1.0.8" />
+		<PackageReference Include="DocumentFormat.OpenXml" Version="3.3.0" />
+		<PackageReference Include="EPPlus" Version="7.5.2" />
+		<PackageReference Include="ExcelDataReader" Version="3.6.0" />
+		<PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
+		<PackageReference Include="HtmlToOpenXml.dll" Version="3.2.5" />
+		<PackageReference Include="InputSimulator" Version="1.0.4" />
+		<PackageReference Include="IronXL.Excel" Version="2024.4.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Office.Interop.Word" Version="15.0.4797.1004" />
+		<PackageReference Include="MicrosoftOfficeCore" Version="15.0.0" NoWarn="NU1701" />
+		<PackageReference Include="NPOI" Version="2.7.0" />
+		<PackageReference Include="NScrape" Version="0.4.1" />
+		<PackageReference Include="SautinSoft.Document" Version="2024.11.20" />
+		<PackageReference Include="SautinSoft.HtmlToRtf" Version="2024.12.12" />
+		<PackageReference Include="SautinSoft.PdfFocus" Version="2024.12.2" />
+		<PackageReference Include="Selenium.Support" Version="4.34.0" />
+		<PackageReference Include="Selenium.WebDriver" Version="4.34.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<PackageReference Include="Syncfusion.DocIO.Net.Core" Version="27.2.5" />
+		<PackageReference Include="System.IO.Packaging" Version="9.0.6" />
+		<PackageReference Include="WkHtmlToPdf" Version="1.0.2" />
+		<PackageReference Include="Xceed.Words.NET" Version="3.0.24152.1219" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\TaxApp.BAL\TaxApp.BAL.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Content\Upload\" />
+		<Folder Include="tmp\" />
+		<Folder Include="UploadedFiles\Output\" />
+		<Folder Include="Upload\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="wwwroot\ExportTemplateFiles\24Q-Q4-Annexure-final.xlsx" />
+		<None Include="wwwroot\ExportTemplateFiles\CHALLAN-DEDUCTEE-24Q.xlsx" />
+		<None Include="wwwroot\ExportTemplateFiles\CHALLAN-DEDUCTEE-26Q.xlsx" />
+		<None Include="wwwroot\ExportTemplateFiles\CHALLAN-DEDUCTEE-27EQ.xlsx" />
+		<None Include="wwwroot\ExportTemplateFiles\CHALLAN-DEDUCTEE-27Q.xlsx" />
+		<None Include="wwwroot\Template\26qTemplate.html" />
+	</ItemGroup>
+
+	<ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="a" /></VisualStudio></ProjectExtensions>
+
+</Project>

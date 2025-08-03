@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/TaxAPI/.vs/ProjectEvaluation
+/TaxAPI/.vs/TaxAPI
+/TaxAPI/bin/Debug/net6.0
+/.vs/TaxAPISolution/FileContentIndex
+/TaxApp.BAL/bin/Debug/net6.0
+/TaxApp.BAL/obj
+/TaxApp.DAL/bin/Debug/net6.0
+/TaxApp.DAL/obj
+/TaxAPI/obj

@@ -1,0 +1,14 @@
+detecting proxies
+proxy type: DIRECT
+No Proxy
+onlineservices.tin.egov-nsdl.com
+the proxy validator is true
+detecting proxies
+proxy type: DIRECT
+No Proxy
+onlineservices.tin.egov-nsdl.com
+--result--9.2^2.188^2.1318
+FVU_Electronic_after2010119.2
+FVU_Electronic_before2010112.188
+FVU_Paper2.1318
+the btnbrowseErrorFilePath is javax.swing.JButton[,0,0,0x0,invalid,alignmentX=0.0,alignmentY=0.5,border=javax.swing.plaf.BorderUIResource$CompoundBorderUIResource@206a70ef,flags=296,maximumSize=,minimumSize=,preferredSize=java.awt.Dimension[width=84,height=25],defaultIcon=,disabledIcon=,disabledSelectedIcon=,margin=javax.swing.plaf.InsetsUIResource[top=2,left=14,bottom=2,right=14],paintBorder=true,paintFocus=true,pressedIcon=,rolloverEnabled=true,rolloverIcon=,rolloverSelectedIcon=,selectedIcon=,text=Browse,defaultCapable=true]

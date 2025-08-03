@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+
+  api-tax:
+    build: .
+    container_name: api-tax
+    image: api-tax
+    ports:
+      - 5001:80
+    restart: always

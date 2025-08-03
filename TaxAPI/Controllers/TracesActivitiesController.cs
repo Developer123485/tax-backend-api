@@ -1,0 +1,166 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using TaxApp.BAL.Interface;
+using TaxApp.BAL.Models;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace TaxAPI.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class TracesActivitiesController : ControllerBase
+    {
+        public ILogger<AuthController> logger;
+        public ITracesActivitiesService _tracesActivitiesService;
+        private static IWebDriver driver;
+        public TracesActivitiesController(ITracesActivitiesService tracesActivitiesService)
+        {
+            _tracesActivitiesService = tracesActivitiesService;
+        }
+        [HttpPost("autoFillLogin")]
+        public async Task<IActionResult> GetAutoFillLoginDetail([FromForm] TracesActivitiesFilterModel model)
+        {
+            var currentUser = HttpContext.User;
+            var userId = Convert.ToInt32(currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value);
+            var response = await _tracesActivitiesService.GetAutoFillLoginDetail(model, userId);
+            return Ok(response);
+        }
+
+        [HttpPost("start-login")]
+        public async Task<IActionResult> StartLogin([FromBody] TracesLogin model)
+        {
+            try
+            {
+                var options = new ChromeOptions();
+                options.AddArgument("--start-maximized");
+                string uniqueProfile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+                options.AddArgument($"--user-data-dir={uniqueProfile}");
+                driver = new ChromeDriver(options);
+                driver.Manage().Window.Position = new System.Drawing.Point(0, 0);
+                driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
+
+                driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/login.xhtml?usr=Ded");
+
+                driver.FindElement(By.Id("userId")).SendKeys(model.UserName);
+                driver.FindElement(By.Id("psw")).SendKeys(model.Password);
+                driver.FindElement(By.Id("tanpan")).SendKeys(model.TanNumber);
+
+                var captchaImg = driver.FindElement(By.Id("captchaImg"));
+                string src = captchaImg.GetAttribute("src");
+
+                byte[] imageData;
+
+                if (src.StartsWith("data:image"))
+                {
+                    string base64 = src.Split(",")[1];
+                    imageData = Convert.FromBase64String(base64);
+                }
+                else
+                {
+                    imageData = ((ITakesScreenshot)captchaImg).GetScreenshot().AsByteArray;
+                }
+
+                string base64Image = Convert.ToBase64String(imageData);
+                return Ok(new { captcha = $"data:image/png;base64,{base64Image}", profileUsed = uniqueProfile });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("❌ Error: " + ex.Message);
+            }
+        }
+
+        [HttpPost("continueRequestConsoFile")] // Accepts CAPTCHA and continues
+        public async Task<IActionResult> ContinueAutomation([FromBody] TracesActivities model)
+        {
+            ChromeOptions options = new ChromeOptions();
+            options.AddArgument("--start-maximized");
+
+            using var driver = new ChromeDriver(options);
+            driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
+
+            try
+            {
+                driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/login.xhtml?usr=Ded");
+
+                driver.FindElement(By.Id("userId")).SendKeys(model.UserName);
+                driver.FindElement(By.Id("psw")).SendKeys(model.Password);
+                driver.FindElement(By.Id("tanpan")).SendKeys(model.Tan);
+
+                await Task.Delay(1000);
+                driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
+                driver.FindElement(By.Id("clickLogin")).Click();
+
+                await Task.Delay(10000);
+
+                driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/ded/nsdlconsofile.xhtml");
+
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+                wait.Until(d => d.FindElement(By.Id("finYr")));
+
+                new SelectElement(driver.FindElement(By.Id("finYr"))).SelectByText(model.FinancialYear);
+                new SelectElement(driver.FindElement(By.Id("frmType"))).SelectByText(model.FormType);
+                new SelectElement(driver.FindElement(By.Id("qrtr"))).SelectByText(model.Quarter);
+
+                driver.FindElement(By.Id("download_conso")).Click();
+
+                if (model.Validation_Mode == "with_dsc")
+                {
+                    driver.FindElement(By.Id("dsckyc")).Click();
+                }
+                else
+                {
+                    driver.FindElement(By.Id("search2")).Click();
+                    driver.FindElement(By.Id("normalkyc")).Click();
+                }
+
+                wait.Until(d => d.FindElement(By.Id("token")));
+
+                driver.FindElement(By.Id("token")).SendKeys(model.Token);
+
+                driver.FindElement(By.Id("bsr")).SendKeys(model.Challan.BSR);
+                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(model.Challan.Date);
+                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.ChallanSrNo.ToString());
+                driver.FindElement(By.Id("chlnamt")).SendKeys(model.Challan.Amount.ToString());
+                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.CdRecordNo);
+
+                driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
+                driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
+                driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
+                driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
+                driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
+                driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
+
+                driver.FindElement(By.Id("clickKYC")).Click();
+
+                wait.Until(d => d.FindElement(By.XPath("//*[contains(text(), 'Request submitted successfully')]")));
+
+                return Ok("✅ Request submitted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("⚠️ Automation failed: " + ex.Message);
+            }
+        }
+
+        // POST api/<TracesActivitiesController>
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/<TracesActivitiesController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/<TracesActivitiesController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+    }
+}

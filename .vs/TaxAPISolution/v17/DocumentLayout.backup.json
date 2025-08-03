@@ -1,0 +1,927 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\formscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\formscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\24qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\24qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\requestresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\requestresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\27eqvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\27eqvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\formvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\formvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\helpers\\uploadfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\helpers\\uploadfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\challanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\challanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\27qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\27qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\tracesactivitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\tracesactivitiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\deductorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\deductorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\traceslogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\traceslogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\tracesactivitiesfiltermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\tracesactivitiesfiltermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\tracesactivitiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\tracesactivitiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.dal\\models\\challan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|solutionrelative:taxapp.dal\\models\\challan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\formservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\formservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\fuvvalidatereturncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\fuvvalidatereturncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\utilities\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\utilities\\common.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\reportingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\reportingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\reportingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\reportingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.dal\\models\\tdsreturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|solutionrelative:taxapp.dal\\models\\tdsreturn.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\challancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\challancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.dal\\models\\deductor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|solutionrelative:taxapp.dal\\models\\deductor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\ireportingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\ireportingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\filtermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\filtermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\formvalidationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\formvalidationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\itracesactivitiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\itracesactivitiesservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\panandamountcombinationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\panandamountcombinationmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.dal\\models\\deducteeentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|solutionrelative:taxapp.dal\\models\\deducteeentry.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.dal\\models\\taxappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|solutionrelative:taxapp.dal\\models\\taxappcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.dal\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9DC3CA9E-75D0-43CA-8309-A7BCAC8678C6}|TaxApp.DAL\\TaxApp.DAL.csproj|solutionrelative:taxapp.dal\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\ichallanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\ichallanservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\i26qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\i26qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\employeeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\enummodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\enummodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\deductorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\deductorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\deducteeentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\deducteeentryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\deducteeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\deducteeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\iformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\iformservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\controllers\\deducteecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\controllers\\deducteecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\services\\26qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\services\\26qvalidationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\formdashboardfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\formdashboardfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\deductorsavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\deductorsavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{24C8C8C3-BAAE-411F-9687-0AB55D67FB33}|TaxAPI\\TaxAPI.csproj|solutionrelative:taxapi\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\ideductorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\ideductorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\helper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\utilities\\encryption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\utilities\\encryption.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\interface\\ideducteeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\interface\\ideducteeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\returnfillingduedatessavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\returnfillingduedatessavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\enumliststatuess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\enumliststatuess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\tdsdeductedreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\tdsdeductedreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\formtdsratessavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\formtdsratessavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\deducteeentryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\deducteeentryfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\salarydetailsavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\salarydetailsavemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|c:\\users\\nkgup\\desktop\\riyaprojects\\tax-backend-api\\taxapp.bal\\models\\salaryreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E387709-6BCB-4388-975E-C24C155F276A}|TaxApp.BAL\\TaxApp.BAL.csproj|solutionrelative:taxapp.bal\\models\\salaryreport.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RequestResponse.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\RequestResponse.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\RequestResponse.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\RequestResponse.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\RequestResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:12:24.231Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "24QValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\24QValidationService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\24QValidationService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\24QValidationService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\24QValidationService.cs",
+              "ViewState": "AgIAAKoBAAAAAAAAAAAMwIQBAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T07:58:19.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FormValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\FormValidationService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\FormValidationService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\FormValidationService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\FormValidationService.cs",
+              "ViewState": "AgIAAAcBAAAAAAAAAAD4vwwBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-26T07:37:56.362Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormsController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\FormsController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\FormsController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\FormsController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\FormsController.cs",
+              "ViewState": "AgIAAAAFAAAAAAAAAAAgwBUFAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:08:46.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ChallanService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\ChallanService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\ChallanService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\ChallanService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\ChallanService.cs",
+              "ViewState": "AgIAAAMCAAAAAAAAAAAMwBQCAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:16:25.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UploadFile.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Helpers\\UploadFile.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Helpers\\UploadFile.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Helpers\\UploadFile.cs",
+              "RelativeToolTip": "TaxAPI\\Helpers\\UploadFile.cs",
+              "ViewState": "AgIAAP8CAAAAAAAAAAAewLYCAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:47:16.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "27EQValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\27EQValidationService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\27EQValidationService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\27EQValidationService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\27EQValidationService.cs",
+              "ViewState": "AgIAAPMBAAAAAAAAAAAgwAcCAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T09:03:29.458Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TracesActivitiesService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\TracesActivitiesService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\TracesActivitiesService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\TracesActivitiesService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\TracesActivitiesService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:26:47.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "27QValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\27QValidationService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\27QValidationService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\27QValidationService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\27QValidationService.cs",
+              "ViewState": "AgIAAEsBAAAAAAAAAAAQwGMBAACZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T04:47:16.111Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TracesActivitiesController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\TracesActivitiesController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\TracesActivitiesController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\TracesActivitiesController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\TracesActivitiesController.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAewCEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:02:48.917Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TracesActivitiesFilterModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\TracesActivitiesFilterModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\TracesActivitiesFilterModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\TracesActivitiesFilterModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\TracesActivitiesFilterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:17:13.149Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TracesLogin.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\TracesLogin.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\TracesLogin.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\TracesLogin.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\TracesLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-21T13:06:29.574Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "DeductorController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\DeductorController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\DeductorController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\DeductorController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\DeductorController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAACkAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T12:54:02.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Challan.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\Challan.cs",
+              "RelativeDocumentMoniker": "TaxApp.DAL\\Models\\Challan.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\Challan.cs",
+              "RelativeToolTip": "TaxApp.DAL\\Models\\Challan.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAlwA4AAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:40:19.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "FormService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\FormService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\FormService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\FormService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\FormService.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAWwDEAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T18:00:26.89Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Common.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Utilities\\Common.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Utilities\\Common.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Utilities\\Common.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Utilities\\Common.cs",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAQwHoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T07:50:34.306Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "FuvValidateReturnController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\FuvValidateReturnController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\FuvValidateReturnController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\FuvValidateReturnController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\FuvValidateReturnController.cs",
+              "ViewState": "AgIAAPYBAAAAAAAAAAAAwAoCAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T06:59:39.853Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ReportingController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\ReportingController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\ReportingController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\ReportingController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\ReportingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:10:19.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "ReportingService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\ReportingService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\ReportingService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\ReportingService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\ReportingService.cs",
+              "ViewState": "AgIAANoCAAAAAAAAAAD4v9sCAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:13:07.676Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TdsReturn.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\TdsReturn.cs",
+              "RelativeDocumentMoniker": "TaxApp.DAL\\Models\\TdsReturn.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\TdsReturn.cs",
+              "RelativeToolTip": "TaxApp.DAL\\Models\\TdsReturn.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:38:34.485Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Deductor.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\Deductor.cs",
+              "RelativeDocumentMoniker": "TaxApp.DAL\\Models\\Deductor.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\Deductor.cs",
+              "RelativeToolTip": "TaxApp.DAL\\Models\\Deductor.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAxwDgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:02:28.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "FilterModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\FilterModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\FilterModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\FilterModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\FilterModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBAAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-18T14:09:47.378Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ChallanController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\ChallanController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\ChallanController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\ChallanController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\ChallanController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAkwHEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T09:14:37.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "IReportingService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IReportingService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\IReportingService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IReportingService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\IReportingService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAYwBQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:20:29.191Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FormValidationController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\FormValidationController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\FormValidationController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\FormValidationController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\FormValidationController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T08:23:30.343Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ITracesActivitiesService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\ITracesActivitiesService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\ITracesActivitiesService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\ITracesActivitiesService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\ITracesActivitiesService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:26:26.432Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "PanAndAmountCombinationModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\PanAndAmountCombinationModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\PanAndAmountCombinationModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\PanAndAmountCombinationModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\PanAndAmountCombinationModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T13:16:51.531Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "TaxAppContext.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\TaxAppContext.cs",
+              "RelativeDocumentMoniker": "TaxApp.DAL\\Models\\TaxAppContext.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\TaxAppContext.cs",
+              "RelativeToolTip": "TaxApp.DAL\\Models\\TaxAppContext.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAgwF0AAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T15:30:54.37Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Program.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Program.cs",
+              "RelativeToolTip": "TaxAPI\\Program.cs",
+              "ViewState": "AgIAADwAAAAAAAAAAIBJwFwAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-15T10:57:54.949Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "DeducteeEntry.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\DeducteeEntry.cs",
+              "RelativeDocumentMoniker": "TaxApp.DAL\\Models\\DeducteeEntry.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\DeducteeEntry.cs",
+              "RelativeToolTip": "TaxApp.DAL\\Models\\DeducteeEntry.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAA2wFAAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-25T13:07:30.641Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\User.cs",
+              "RelativeDocumentMoniker": "TaxApp.DAL\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.DAL\\Models\\User.cs",
+              "RelativeToolTip": "TaxApp.DAL\\Models\\User.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAA8wCQAAABaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:41:34.375Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IChallanService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IChallanService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\IChallanService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IChallanService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\IChallanService.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwA0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-30T12:27:07.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "EmployeesController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\EmployeesController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\EmployeesController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\EmployeesController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\EmployeesController.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAAwCEAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:31:09.202Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "I26QValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\I26QValidationService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\I26QValidationService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\I26QValidationService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\I26QValidationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-01T11:27:57.843Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "EmployeeService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\EmployeeService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\EmployeeService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\EmployeeService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\EmployeeService.cs",
+              "ViewState": "AgIAAIkAAAAAAAAAAAAmwGMAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T08:41:25.451Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "EnumModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\EnumModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\EnumModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\EnumModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\EnumModel.cs",
+              "ViewState": "AgIAAFoFAAAAAAAAAAAAwGoFAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T14:49:02.518Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "DeductorService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\DeductorService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\DeductorService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\DeductorService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\DeductorService.cs",
+              "ViewState": "AgIAADkBAAAAAAAAAAAQwEoBAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-06T08:00:53.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "DeducteeEntryService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\DeducteeEntryService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\DeducteeEntryService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\DeducteeEntryService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\DeducteeEntryService.cs",
+              "ViewState": "AgIAAEkDAAAAAAAAAAAiwKwCAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T17:43:44.318Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "DeducteeService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\DeducteeService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\DeducteeService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\DeducteeService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\DeducteeService.cs",
+              "ViewState": "AgIAAJoAAAAAAAAAAAAmwKYAAABKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T08:41:15.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "IFormService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IFormService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\IFormService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IFormService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\IFormService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwBIAAAB/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T16:37:00.755Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "DeducteeController.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\DeducteeController.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Controllers\\DeducteeController.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Controllers\\DeducteeController.cs",
+              "RelativeToolTip": "TaxAPI\\Controllers\\DeducteeController.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAApwEMAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T17:47:01.76Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "26QValidationService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\26QValidationService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Services\\26QValidationService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Services\\26QValidationService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Services\\26QValidationService.cs",
+              "ViewState": "AgIAADUCAAAAAAAAAAAQwEECAABuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-08T12:22:32.582Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "FormDashboardFilter.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\FormDashboardFilter.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\FormDashboardFilter.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\FormDashboardFilter.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\FormDashboardFilter.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA+wBcAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T16:32:06.906Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Startup.cs",
+              "RelativeDocumentMoniker": "TaxAPI\\Startup.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxAPI\\Startup.cs",
+              "RelativeToolTip": "TaxAPI\\Startup.cs",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T13:30:02.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "IDeductorService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IDeductorService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\IDeductorService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IDeductorService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\IDeductorService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA1wBcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T12:32:30.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "DeductorSaveModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\DeductorSaveModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\DeductorSaveModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\DeductorSaveModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\DeductorSaveModel.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAIAxwFgAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-17T11:04:24.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Helper.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Helper.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Helper.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Helper.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Helper.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAIBJwB4AAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T07:50:54.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Encryption.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Utilities\\Encryption.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Utilities\\Encryption.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Utilities\\Encryption.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Utilities\\Encryption.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-10T07:50:40.289Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "IDeducteeService.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IDeducteeService.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Interface\\IDeducteeService.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Interface\\IDeducteeService.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Interface\\IDeducteeService.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAQwA4AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-07T17:49:23.612Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "EnumListStatuess.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\EnumListStatuess.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\EnumListStatuess.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\EnumListStatuess.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\EnumListStatuess.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-05T14:48:59.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "FormTDSRatesSaveModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\FormTDSRatesSaveModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\FormTDSRatesSaveModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\FormTDSRatesSaveModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\FormTDSRatesSaveModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:12:52.522Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "DeducteeEntryFilter.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\DeducteeEntryFilter.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\DeducteeEntryFilter.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\DeducteeEntryFilter.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\DeducteeEntryFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:12:36.197Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ReturnFillingDueDatesSaveModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\ReturnFillingDueDatesSaveModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\ReturnFillingDueDatesSaveModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\ReturnFillingDueDatesSaveModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\ReturnFillingDueDatesSaveModel.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA1wAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:12:23.136Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "SalaryReport.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\SalaryReport.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\SalaryReport.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\SalaryReport.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\SalaryReport.cs",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAIwBoAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:12:20.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "SalaryDetailSaveModel.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\SalaryDetailSaveModel.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\SalaryDetailSaveModel.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\SalaryDetailSaveModel.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\SalaryDetailSaveModel.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAABYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:12:13.282Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "TdsDeductedReport.cs",
+              "DocumentMoniker": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\TdsDeductedReport.cs",
+              "RelativeDocumentMoniker": "TaxApp.BAL\\Models\\TdsDeductedReport.cs",
+              "ToolTip": "C:\\Users\\nkgup\\Desktop\\RiyaProjects\\tax-backend-api\\TaxApp.BAL\\Models\\TdsDeductedReport.cs",
+              "RelativeToolTip": "TaxApp.BAL\\Models\\TdsDeductedReport.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-04T01:10:33.703Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
