@@ -9,7 +9,6 @@ using TaxApp.DAL.Models;
 //using DocumentFormat.OpenXml.Packaging;
 //using DocumentFormat.OpenXml.Wordprocessing;
 //using HtmlToOpenXml;
-using System.Windows.Forms; // Requires WindowsFormsApp context
 using WindowsInput;
 using WindowsInput.Native;
 using Microsoft.Office.Core;

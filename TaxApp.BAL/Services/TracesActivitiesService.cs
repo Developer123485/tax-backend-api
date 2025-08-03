@@ -40,18 +40,21 @@ namespace TaxApp.BAL.Services
                 var challanList = context.ChallanList.Where(p => p.DeductorId == model.DeductorId && p.UserId == userId && p.FinancialYear == model.FinancialYear && p.Quarter == p.Quarter && p.CategoryId == categoryId).ToList();
                 if (challanList != null && challanList.Count() > 0)
                 {
-                    var challanId = challanList.Min(d => d.Id);
-                    var challanDetail = challanList.SingleOrDefault(p => p.Id == challanId);
 
-                    challanDetailModel.BSR = challanDetail.BSRCode;
-                    challanDetailModel.Date = challanDetail.DateOfDeposit;
-                    challanDetailModel.CdRecordNo = challanDetail.ChallanVoucherNo;
-                    challanDetailModel.ChallanSrNo = challanDetail.SerialNo;
-                    challanDetailModel.Amount = challanDetail.TotalTaxDeposit;
-                    var deducteeResults = context.DeducteeEntry.Where(p => p.DeductorId == model.DeductorId && p.UserId == userId && p.FinancialYear == model.FinancialYear && p.Quarter == p.Quarter && p.CategoryId == categoryId && p.ChallanId == challanId).ToList();
+                    var deducteeResults = context.DeducteeEntry.Where(p => p.DeductorId == model.DeductorId && p.UserId == userId && p.FinancialYear == model.FinancialYear && p.Quarter == p.Quarter && p.CategoryId == categoryId).ToList();
                     var uniqueCombination = GetUniquePanAmountCombinations(deducteeResults);
-                    if (uniqueCombination.Count() > 0)
+
+                    if (uniqueCombination != null && uniqueCombination.Count() > 0)
                     {
+                        var challanId = uniqueCombination.First().ChallanId;
+                        var challanDetail = challanList.SingleOrDefault(p => p.Id == challanId);
+
+                        challanDetailModel.BSR = challanDetail.BSRCode;
+                        challanDetailModel.Date = challanDetail.DateOfDeposit;
+                        challanDetailModel.CdRecordNo = challanDetail.ChallanVoucherNo;
+                        challanDetailModel.ChallanSrNo = challanDetail.SerialNo;
+                        challanDetailModel.Amount = challanDetail.TotalTaxDeposit;
+
                         for (var i = 0; i < uniqueCombination.Count(); i++)
                         {
                             if (i == 0)
@@ -70,41 +73,50 @@ namespace TaxApp.BAL.Services
                                 deduction.Amount3 = uniqueCombination[i].TotalTaxDeposited;
                             }
                         }
+                        if (tdsReturn != null)
+                        {
+                            responseModel.Token = tdsReturn.Token;
+                        }
+                        responseModel.Challan = challanDetailModel;
+                        responseModel.Deduction = deduction;
                     }
-                    if (tdsReturn != null)
-                    {
-                        responseModel.Token = tdsReturn.Token;
-                    }
-                    responseModel.Challan = challanDetailModel;
-                    responseModel.Deduction = deduction;
                 }
                 return responseModel;
             }
         }
         public List<DeducteeEntry> GetUniquePanAmountCombinations(List<DeducteeEntry> deducteeList)
         {
-            var result = new List<DeducteeEntry>();
+            var grouped = deducteeList.GroupBy(d => d.ChallanId);
 
-            var groupedByPan = deducteeList
-                .GroupBy(d => d.PanOfDeductee);
+            // Step 2: Create dictionary of ChallanId → List of up to 3 unique (PAN + Amount)
+            var challanMap = new Dictionary<string, List<DeducteeEntry>>();
 
-            foreach (var group in groupedByPan)
+            foreach (var group in grouped)
             {
-                var uniqueAmounts = group
-                    .Select(d => d.TotalTaxDeposited)
-                    .Distinct();
+                var seen = new HashSet<string>();
+                var uniqueList = new List<DeducteeEntry>();
 
-                foreach (var amount in uniqueAmounts)
+                foreach (var d in group)
                 {
-                    result.Add(new DeducteeEntry
+                    string key = $"{d.PanOfDeductee}_{d.TotalTaxDeducted}";
+
+                    if (!seen.Contains(key))
                     {
-                        PanOfDeductee = group.Key,
-                        TotalTaxDeposited = amount,
-                    });
+                        seen.Add(key);
+                        uniqueList.Add(d);
+                    }
+
+                    if (uniqueList.Count == 3)
+                        break;
                 }
+
+                challanMap[group.Key.ToString()] = uniqueList;
             }
 
-            return result.OrderByDescending(p => p.TotalTaxDeposited).Take(3).ToList();
+            // Step 3: Get the challan with max unique combinations (max 3)
+            var maxChallan = challanMap.OrderByDescending(c => c.Value.Count).FirstOrDefault();
+
+            return maxChallan.Value;
         }
     }
 }
