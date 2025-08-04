@@ -19,6 +19,7 @@ namespace TaxApp.BAL.Services
             var challanDetailModel = new ChallanDetailModel();
             using (var context = new TaxAppContext())
             {
+                var deductor = context.Deductors.SingleOrDefault(p => p.UserId == userId && p.Id == model.DeductorId);
                 var tdsReturn = context.TdsReturn.SingleOrDefault(p => p.UserId == userId && p.DeductorId == model.DeductorId && p.Quarter == model.Quarter && p.FY == model.FinancialYear && p.FormName == model.Form);
                 int categoryId = 0;
                 if (model.Form == "24Q")
@@ -76,6 +77,8 @@ namespace TaxApp.BAL.Services
                         if (tdsReturn != null)
                         {
                             responseModel.Token = tdsReturn.Token;
+                            responseModel.UserName = deductor.TracesLogin;
+                            responseModel.Password = deductor.TracesPassword;
                         }
                         responseModel.Challan = challanDetailModel;
                         responseModel.Deduction = deduction;
