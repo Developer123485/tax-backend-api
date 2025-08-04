@@ -79,9 +79,7 @@ namespace TaxAPI.Controllers
             {
                 driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
                 driver.FindElement(By.Id("clickLogin")).Click();
-
                 Thread.Sleep(3000);
-
                 driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/ded/nsdlconsofile.xhtml");
                 Thread.Sleep(1000);
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
@@ -112,16 +110,24 @@ namespace TaxAPI.Controllers
                 driver.FindElement(By.Id("csn")).SendKeys(model.Challan.CdRecordNo.ToString());
                 driver.FindElement(By.Id("chlnamt")).SendKeys(model.Challan.Amount.ToString());
                 driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.ChallanSrNo.ToString());
-
-                driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
-                driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
-                driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
-                driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
-
+                if (!String.IsNullOrEmpty(model.Deduction.Pan1))
+                {
+                    driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
+                    driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
+                }
+                if (!String.IsNullOrEmpty(model.Deduction.Pan2))
+                {
+                    driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
+                    driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
+                }
+                if (!String.IsNullOrEmpty(model.Deduction.Pan3))
+                {
+                    driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
+                    driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
+                }
                 driver.FindElement(By.Id("clickKYC")).Click();
                 Thread.Sleep(3000);
                 IAlert alert = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
-
                 if (alert.Text.Contains("Are you sure you have less than 3 PANs"))
                 {
                     alert.Accept(); // Clicks "OK"
@@ -145,20 +151,16 @@ namespace TaxAPI.Controllers
             {
                 driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
                 driver.FindElement(By.Id("clickLogin")).Click();
-
-                await Task.Delay(10000);
-
+                Thread.Sleep(3000);
                 driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/ded/download16.xhtml");
-
+                Thread.Sleep(1000);
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                wait.Until(d => d.FindElement(By.Id("bulkfinYr")));
-
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Id("bulkfinYr")));
 
                 new SelectElement(driver.FindElement(By.Id("bulkfinYr"))).SelectByText(model.FinancialYear);
 
                 driver.FindElement(By.Id("bulkGo")).Click();
                 driver.FindElement(By.Id("j_id1972728517_7cc7de5f")).Click();
-
                 if (model.Validation_Mode == "with_dsc")
                 {
                     driver.FindElement(By.Id("dsckyc")).Click();
@@ -170,27 +172,42 @@ namespace TaxAPI.Controllers
                 }
 
                 wait.Until(d => d.FindElement(By.Id("token")));
-
                 driver.FindElement(By.Id("token")).SendKeys(model.Token);
-
+                DateTime date = DateTime.ParseExact(model.Challan.Date, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                string formattedDate = date.ToString("dd-MMM-yyyy");
                 driver.FindElement(By.Id("bsr")).SendKeys(model.Challan.BSR);
-                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(model.Challan.Date);
-                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.ChallanSrNo.ToString());
+                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(formattedDate);
+                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.CdRecordNo.ToString());
                 driver.FindElement(By.Id("chlnamt")).SendKeys(model.Challan.Amount.ToString());
-                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.CdRecordNo);
-
-                driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
-                driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
-                driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
-                driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
-                driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
-                driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
+                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.ChallanSrNo.ToString());
+                if (!String.IsNullOrEmpty(model.Deduction.Pan1))
+                {
+                    driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
+                    driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
+                }
+                if (!String.IsNullOrEmpty(model.Deduction.Pan2))
+                {
+                    driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
+                    driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
+                }
+                if (!String.IsNullOrEmpty(model.Deduction.Pan3))
+                {
+                    driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
+                    driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
+                }
 
                 driver.FindElement(By.Id("clickKYC")).Click();
-
-                wait.Until(d => d.FindElement(By.XPath("//*[contains(text(), 'Request submitted successfully')]")));
-
-                return Ok("Request submitted successfully.");
+                Thread.Sleep(3000);
+                IAlert alert = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
+                if (alert.Text.Contains("Are you sure you have less than 3 PANs"))
+                {
+                    alert.Accept(); // Clicks "OK"
+                }
+                Thread.Sleep(1000);
+                driver.FindElement(By.Id("redirect")).Click();
+                Thread.Sleep(2000);
+                var txt = driver.FindElement(By.ClassName("margintop20")).Text;
+                return Ok(txt);
             }
             catch (Exception ex)
             {
