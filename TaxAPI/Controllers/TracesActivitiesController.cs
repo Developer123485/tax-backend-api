@@ -4,7 +4,7 @@ using TaxApp.BAL.Models;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
-
+using SeleniumExtras.WaitHelpers;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace TaxAPI.Controllers
@@ -80,14 +80,12 @@ namespace TaxAPI.Controllers
                 driver.FindElement(By.Id("captcha")).SendKeys(model.Captcha);
                 driver.FindElement(By.Id("clickLogin")).Click();
 
-                await Task.Delay(10000);
+                Thread.Sleep(3000);
 
                 driver.Navigate().GoToUrl("https://www.tdscpc.gov.in/app/ded/nsdlconsofile.xhtml");
-
+                Thread.Sleep(1000);
                 WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-                wait.Until(d => d.FindElement(By.Id("finYr")));
-
-
+                wait.Until(ExpectedConditions.ElementIsVisible(By.Id("finYr")));
                 new SelectElement(driver.FindElement(By.Id("finYr"))).SelectByText(model.FinancialYear);
                 new SelectElement(driver.FindElement(By.Id("frmType"))).SelectByText(model.FormType);
                 new SelectElement(driver.FindElement(By.Id("qrtr"))).SelectByText(model.Quarter);
@@ -104,28 +102,35 @@ namespace TaxAPI.Controllers
                     driver.FindElement(By.Id("normalkyc")).Click();
                 }
 
-                wait.Until(d => d.FindElement(By.Id("token")));
-
+                var tokenInput = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("token")));
                 driver.FindElement(By.Id("token")).SendKeys(model.Token);
 
-                driver.FindElement(By.Id("bsr")).SendKeys(model.Challan.BSR);
-                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(model.Challan.Date);
-                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.ChallanSrNo.ToString());
+                DateTime date = DateTime.ParseExact(model.Challan.Date, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                string formattedDate = date.ToString("dd-MMM-yyyy");
+                driver.FindElement(By.Id("bsr")).SendKeys(model.Challan.BSR.ToString());
+                driver.FindElement(By.Id("dtoftaxdep")).SendKeys(formattedDate);
+                driver.FindElement(By.Id("csn")).SendKeys(model.Challan.CdRecordNo.ToString());
                 driver.FindElement(By.Id("chlnamt")).SendKeys(model.Challan.Amount.ToString());
-                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.CdRecordNo);
+                driver.FindElement(By.Id("cdrecnum")).SendKeys(model.Challan.ChallanSrNo.ToString());
 
                 driver.FindElement(By.Id("pan1")).SendKeys(model.Deduction.Pan1);
                 driver.FindElement(By.Id("amt1")).SendKeys(model.Deduction.Amount1.ToString());
                 driver.FindElement(By.Id("pan2")).SendKeys(model.Deduction.Pan2);
                 driver.FindElement(By.Id("amt2")).SendKeys(model.Deduction.Amount2.ToString());
-                driver.FindElement(By.Id("pan3")).SendKeys(model.Deduction.Pan3);
-                driver.FindElement(By.Id("amt3")).SendKeys(model.Deduction.Amount3.ToString());
 
                 driver.FindElement(By.Id("clickKYC")).Click();
+                Thread.Sleep(3000);
+                IAlert alert = wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.AlertIsPresent());
 
-                wait.Until(d => d.FindElement(By.XPath("//*[contains(text(), 'Request submitted successfully')]")));
-
-                return Ok("Request submitted successfully.");
+                if (alert.Text.Contains("Are you sure you have less than 3 PANs"))
+                {
+                    alert.Accept(); // Clicks "OK"
+                }
+                Thread.Sleep(1000);
+                driver.FindElement(By.Id("redirect")).Click();
+                Thread.Sleep(2000);
+                var txt = driver.FindElement(By.ClassName("margintop20")).Text;
+                return Ok(txt);
             }
             catch (Exception ex)
             {
