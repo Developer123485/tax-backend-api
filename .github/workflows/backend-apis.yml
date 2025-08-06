@@ -54,10 +54,10 @@ jobs:
     - name: Deploy backend
       run: |
         ssh -i ~/.ssh/id_rsa  -o StrictHostKeyChecking=no  root@139.84.144.29 << 'EOF'
-          rm -rf /root/backend-apis/*
+          rm -rf /root/tax-backend-api/*
           file=$(ls -t /root/backup/ | head -n 1)
           echo $file
-          unzip /root/backup/$file -d /root/backend-apis/
+          unzip /root/backup/$file -d /root/tax-backend-api/
           pids=$(pgrep dotnet)
           if [ -n "$pids" ]; then
             echo "Killing dotnet processes: $pids"
