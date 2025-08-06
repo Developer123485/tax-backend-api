@@ -77,9 +77,9 @@ namespace TaxApp.BAL.Services
                         if (tdsReturn != null)
                         {
                             responseModel.Token = tdsReturn.Token;
-                            responseModel.UserName = deductor.TracesLogin;
-                            responseModel.Password = deductor.TracesPassword;
                         }
+                        responseModel.UserName = deductor.TracesLogin;
+                        responseModel.Password = deductor.TracesPassword;
                         responseModel.Challan = challanDetailModel;
                         responseModel.Deduction = deduction;
                     }
