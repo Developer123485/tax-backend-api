@@ -1905,7 +1905,7 @@ namespace TaxAPI.Controllers
                     var currentDate = DateTime.Now.ToString("ddMMyyyy");
                     var index = 1;
                     var fileType = "24G";
-                    csvContent.AppendLine(index + "^FH^" + fileType + currentDate + "^C^D^" + obj.AinCode + "^1^^^^^^^");
+                    csvContent.AppendLine(index + "^FH^" + fileType + "^" + currentDate + "^C^D^" + obj.AinCode + "^1^^^^^^^");
                     string deductorDetail = _deductorService.GetDeductorBy24GQueryString(obj, model);
                     csvContent.AppendLine(deductorDetail);
                 }
