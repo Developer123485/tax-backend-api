@@ -48,7 +48,7 @@ namespace TaxAPI.Controllers
     //            {
     //                options.BinaryLocation = "/usr/bin/google-chrome"; // adjust if needed
     //            }
-                options.BinaryLocation = "/usr/bin/chromium-browser";
+                //options.BinaryLocation = "/usr/bin/chromium-browser";
                 //string uniqueProfile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
                 //options.AddArgument($"--user-data-dir={uniqueProfile}");
                 driver = new ChromeDriver(options);
