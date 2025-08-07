@@ -37,6 +37,7 @@ namespace TaxAPI.Controllers
                 var options = new ChromeOptions();
 
                 // Add arguments like in Python
+                options.BinaryLocation = "/usr/bin/google-chrome";
                 options.AddArgument("--headless"); // Run in headless mode
                 options.AddArgument("--no-sandbox"); // Required in some environments (e.g., Docker)
                 options.AddArgument("--disable-dev-shm-usage"); // Prevents crashes in limited memory/shared memory
