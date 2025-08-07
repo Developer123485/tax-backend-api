@@ -35,6 +35,11 @@ namespace TaxAPI.Controllers
             try
             {
                 var options = new ChromeOptions();
+
+                // Add arguments like in Python
+                options.AddArgument("--headless"); // Run in headless mode
+                options.AddArgument("--no-sandbox"); // Required in some environments (e.g., Docker)
+                options.AddArgument("--disable-dev-shm-usage"); // Prevents crashes in limited memory/shared memory
                 //options.AddArgument("--start-maximized");
                 //string uniqueProfile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
                 //options.AddArgument($"--user-data-dir={uniqueProfile}");
