@@ -37,11 +37,18 @@ namespace TaxAPI.Controllers
                 var options = new ChromeOptions();
 
                 // Add arguments like in Python
-                options.BinaryLocation = "/usr/bin/google-chrome";
                 options.AddArgument("--headless"); // Run in headless mode
                 options.AddArgument("--no-sandbox"); // Required in some environments (e.g., Docker)
                 options.AddArgument("--disable-dev-shm-usage"); // Prevents crashes in limited memory/shared memory
                 //options.AddArgument("--start-maximized");
+                bool isLinux = System.Runtime.InteropServices.RuntimeInformation
+    .IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux);
+
+                if (isLinux)
+                {
+                    options.BinaryLocation = "/usr/bin/google-chrome"; // adjust if needed
+                }
+                options.BinaryLocation = "/usr/bin/chromium-browser";
                 //string uniqueProfile = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
                 //options.AddArgument($"--user-data-dir={uniqueProfile}");
                 driver = new ChromeDriver(options);
