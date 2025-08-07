@@ -672,7 +672,7 @@ namespace TaxApp.BAL.Services
             query += "^";
             query += "^";
             query += "^" + model.ResponsibleName;
-            query += "^" + model.ResponsibleDesignation;
+            query += "^";
             query += "^" + startYear;
             query += "^";
             query += "^" + model.DdoCode ?? "";
