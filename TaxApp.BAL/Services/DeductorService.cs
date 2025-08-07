@@ -650,5 +650,80 @@ namespace TaxApp.BAL.Services
             return query;
         }
 
+
+        public string GetDeductorBy24GQueryString(Deductor model, FormDashboardFilter mod)
+        {
+            int startYear = Common.GetStartYearFromFinancialYear(mod.FinancialYear);
+            var query = "";
+            query += 2;
+            query += "^BH";
+            query += "^1";
+            query += "^X";
+            query += "^" + model.AinCode;
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^" + model.ResponsibleName;
+            query += "^" + model.ResponsibleDesignation;
+            query += "^" + startYear;
+            query += "^";
+            query += "^" + model.DdoCode ?? "";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^" + model.MinistryState;
+            query += "^" + model.MinistryName;
+            query += "^" + model.MinistryNameOther;
+            query += "^" + model.MinistryNameOther;
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^" + model.PaoRegistration;
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^0";
+            query += "^";
+            query += "^";
+            return query;
+        }
     }
 }

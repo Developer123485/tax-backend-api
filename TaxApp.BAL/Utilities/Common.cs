@@ -131,6 +131,20 @@ namespace TaxApp.BAL.Utilities
             return regex.IsMatch(pan);
         }
 
+        public static int GetStartYearFromFinancialYear(string financialYear)
+        {
+            if (string.IsNullOrWhiteSpace(financialYear) || !financialYear.Contains("-"))
+                throw new ArgumentException("Invalid financial year format");
+
+            string[] parts = financialYear.Split('-');
+            if (int.TryParse(parts[0], out int startYear))
+            {
+                return startYear;
+            }
+
+            throw new ArgumentException("Invalid start year in financial year");
+        }
+
         public static bool IsLastDayOfLastQuarter(DateTime givenDate)
         {
             // Get the last quarter's start date

@@ -551,7 +551,7 @@ namespace TaxAPI.Controllers
                     {
                         foreach (var item in comapnys)
                         {
-                            if(model.Form != item.DeductorType)
+                            if (model.Form != item.DeductorType)
                             {
                                 return BadRequest("Company Form Type Does not match");
                             }
@@ -1888,6 +1888,36 @@ namespace TaxAPI.Controllers
             }
 
 
+        }
+
+        [HttpPost("final24GReport")]
+        public async Task<IActionResult> Final24GReport([FromBody] FormDashboardFilter model)
+        {
+            try
+            {
+                var currentUser = HttpContext.User;
+                var userId = Convert.ToInt32(currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value);
+                Deductor obj = new Deductor();
+                StringBuilder csvContent = new StringBuilder();
+                obj = _deductorService.GetDeductor(model.DeductorId, Convert.ToInt32(userId));
+                if (obj != null && obj.Id > 0)
+                {
+                    var currentDate = DateTime.Now.ToString("ddMMyyyy");
+                    var index = 1;
+                    var fileType = "24G";
+                    csvContent.AppendLine(index + "^FH^" + fileType + currentDate + "^C^D^" + obj.AinCode + "^1^^^^^^^");
+                    string deductorDetail = _deductorService.GetDeductorBy24GQueryString(obj, model);
+                    csvContent.AppendLine(deductorDetail);
+                }
+                var fileContent = Encoding.UTF8.GetBytes(csvContent.ToString());
+                var fileName = "24G" + ".txt";
+                return File(fileContent, "text/txt", fileName);
+            }
+            catch (Exception e)
+            {
+                this.logger.LogInformation($"Error In Upload File  => {e.Message}");
+                return BadRequest(e.Message);
+            }
         }
     }
 }

@@ -18,6 +18,7 @@ namespace TaxApp.BAL.Interface
         bool DeleteDeductorList(DeleteIdsFilter model);
         bool GetLogs(string id);
         string GetDeductorQueryString(Deductor model, int index, FormDashboardFilter mod);
+        string GetDeductorBy24GQueryString(Deductor model, FormDashboardFilter mod);
         IEnumerable<Logs> GetLogResults(string id);
         Deductor GetDeductor(int? id, int userId);
         Deductor GetDeductorByTan(int? tan);
