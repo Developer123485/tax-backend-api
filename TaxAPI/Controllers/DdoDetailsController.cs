@@ -67,7 +67,7 @@ namespace TaxAPI.Controllers
             return Ok(results);
         }
 
-        [HttpGet("deleteBulk/{deductorId}")]
+        [HttpPost("deleteBulk/{deductorId}")]
         public IActionResult DeleteBulkDdoDetail([FromBody] DeleteIdsFilter model, int deductorId)
         {
             var currentUser = HttpContext.User;
