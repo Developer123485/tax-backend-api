@@ -91,6 +91,7 @@ builder.Services.AddScoped<I27EQValidationService, _27EQValidationService>();
 builder.Services.AddScoped<I26QValidationService, _26QValidationService>();
 builder.Services.AddScoped<IReportingService, ReportingService>();
 builder.Services.AddScoped<ITracesActivitiesService, TracesActivitiesService>();
+builder.Services.AddScoped<IDdoDetailsService, DdoDetailsService>();
 builder.Services
     .AddControllers()
     .AddJsonOptions(options =>

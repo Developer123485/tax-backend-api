@@ -36,6 +36,7 @@ public partial class User
     public virtual ICollection<DeducteeEntry> DeducteeEntry { get; set; } = new List<DeducteeEntry>();
     public virtual ICollection<TdsReturn> TdsReturn { get; set; } = new List<TdsReturn>();
     public virtual ICollection<Logs> Logs { get; set; } = new List<Logs>();
+    public virtual ICollection<DdoDetails> DdoDetails { get; set; } = new List<DdoDetails>();
     public virtual Subscription? Subscription { get; set; }
     public virtual Roles? Roles { get; set; }
 }

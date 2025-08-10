@@ -84,6 +84,7 @@ namespace TaxApp.DAL.Models
         public virtual ICollection<LateDeductionReport> LateDeductionReport { get; set; } = new List<LateDeductionReport>();
         public virtual ICollection<SalaryPerks> SalaryPerks { get; set; } = new List<SalaryPerks>();
         public virtual ICollection<TdsReturn> TdsReturn { get; set; } = new List<TdsReturn>();
+        public virtual ICollection<DdoDetails> DdoDetails { get; set; } = new List<DdoDetails>();
 
     }
 
