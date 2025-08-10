@@ -30,8 +30,8 @@ namespace TaxAPI.Controllers
             return Ok(results);
         }
 
-        [HttpGet("{deductorId}/{id}")]
-        public IActionResult GetDdoDetail(int deductorId, int id)
+        [HttpGet("{id}")]
+        public IActionResult GetDdoDetail(int id)
         {
             var currentUser = HttpContext.User;
             var userId = Convert.ToInt32(currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value);
