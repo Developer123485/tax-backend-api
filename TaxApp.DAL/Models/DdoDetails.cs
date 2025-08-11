@@ -30,6 +30,7 @@ namespace TaxApp.DAL.Models
         public int DeductorId { get; set; }
         public virtual Deductor? Deductors { get; set; }
         public virtual User? Users { get; set; }
+        public virtual ICollection<DdoWiseDetail> DdoWiseDetails { get; set; } = new List<DdoWiseDetail>();
     }
     public class DdoDetailResponseModel
     {

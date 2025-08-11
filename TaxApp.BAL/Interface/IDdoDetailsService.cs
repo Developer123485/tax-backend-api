@@ -16,5 +16,12 @@ namespace TaxApp.BAL.Interface
         Task<bool> DeleteBulkDdoDetail(List<int> ids, int userId, int deductorId);
         Task<bool> DeleteSingleDdoDetail(int id, int userId, int deductorId);
         Task<bool> DeleteAllDdoDetails(int userId, int deductorId);
+
+        Task<int> CreateDdoWiseDetail(SaveDdoWiseDetailModel model);
+        Task<DdoWiseDetailResponseModel> GetDdoWiseDetailList(FilterModel model, int userId);
+        DdoWiseDetail GetDdoWiseDetail(int id, int userId);
+        Task<bool> DeleteBulkDdoWiseDetail(List<int> ids, int userId);
+        Task<bool> DeleteSingleDdoWiseDetail(int id, int userId);
+        Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId);
     }
 }

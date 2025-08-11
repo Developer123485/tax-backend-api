@@ -21,6 +21,8 @@ namespace TaxApp.BAL.Services
                 if (ddoDetail == null)
                 {
                     ddoDetail = new DdoDetails();
+                    ddoDetail.CreatedDate = DateTime.Now;
+                    ddoDetail.CreatedBy = model.UserId.Value;
                 }
                 else
                 {
@@ -40,8 +42,6 @@ namespace TaxApp.BAL.Services
                 ddoDetail.DdoRegNo = model.DdoRegNo;
                 ddoDetail.DdoCode = model.DdoCode;
                 ddoDetail.DeductorId = model.DeductorId;
-                ddoDetail.CreatedDate = DateTime.Now;
-                ddoDetail.CreatedBy = model.UserId.Value;
                 ddoDetail.UserId = model.UserId.Value;
                 if (ddoDetail.Id == 0)
                     await context.DdoDetails.AddAsync(ddoDetail);
@@ -96,9 +96,28 @@ namespace TaxApp.BAL.Services
 
         public async Task<bool> DeleteSingleDdoDetail(int id, int userId, int deductorId)
         {
+            var values = new List<string>();
             using (var context = new TaxAppContext())
             {
                 var response = context.DdoDetails.SingleOrDefault(p => p.Id == id && p.UserId == userId && p.DeductorId == deductorId);
+                using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
+                {
+                    connection.Open();
+                    var ddoWiseDetails = await context.DdoWiseDetails.Where(p => p.DdoDetailId == id && p.UserId == userId).Select(o => o.Id).ToListAsync();
+                    string queryDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
+                    foreach (var ddoWiseId in ddoWiseDetails)
+                    {
+                        values.Add($"{ddoWiseId}");
+                    }
+                    queryDelete += string.Join(", ", values) + ")";
+                    using (var cmd = new MySqlCommand(queryDelete, connection))
+                    {
+                        if (values != null && values.Count() > 0)
+                        {
+                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        }
+                    }
+                }
                 if (response != null)
                 {
                     context.DdoDetails.Remove(response);
@@ -114,13 +133,28 @@ namespace TaxApp.BAL.Services
             {
                 var filterIds = await context.DdoDetails.Where(p => ids.Contains(p.Id) && p.DeductorId == deductorId && p.UserId == userId).Select(p => p.Id).ToListAsync();
                 var values = new List<string>();
+                var values1 = new List<string>();
                 string queryDelete = "DELETE FROM ddoDetails WHERE Id IN (";
+                string queryDdoWiseDetailDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
                 using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
                 {
                     connection.Open();
                     foreach (var cId in filterIds)
                     {
+                        var ddoWiseDetails = await context.DdoWiseDetails.Where(p => p.DdoDetailId == cId && p.UserId == userId).Select(o => o.Id).ToListAsync();
+                        foreach (var ddoWiseId in ddoWiseDetails)
+                        {
+                            values1.Add($"{ddoWiseId}");
+                        }
                         values.Add($"{cId}");
+                    }
+                    queryDdoWiseDetailDelete += string.Join(", ", values1) + ")";
+                    using (var cmd = new MySqlCommand(queryDdoWiseDetailDelete, connection))
+                    {
+                        if (values1 != null && values1.Count() > 0)
+                        {
+                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        }
                     }
                     queryDelete += string.Join(", ", values) + ")";
                     using (var cmd = new MySqlCommand(queryDelete, connection))
@@ -142,7 +176,138 @@ namespace TaxApp.BAL.Services
             {
                 var filterIds = await context.DdoDetails.Where(p => p.DeductorId == deductorId && p.UserId == userId).Select(p => p.Id).ToListAsync();
                 var values = new List<string>();
+                var values1 = new List<string>();
                 string queryDelete = "DELETE FROM ddoDetails WHERE Id IN (";
+                string queryDdoWiseDetailDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
+                using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
+                {
+                    connection.Open();
+                    foreach (var cId in filterIds)
+                    {
+                        var ddoWiseDetails = await context.DdoWiseDetails.Where(p => p.DdoDetailId == cId && p.UserId == userId).Select(o => o.Id).ToListAsync();
+                        foreach (var ddoWiseId in ddoWiseDetails)
+                        {
+                            values1.Add($"{ddoWiseId}");
+                        }
+                        values.Add($"{cId}");
+                    }
+                    queryDdoWiseDetailDelete += string.Join(", ", values1) + ")";
+                    using (var cmd = new MySqlCommand(queryDdoWiseDetailDelete, connection))
+                    {
+                        if (values1 != null && values1.Count() > 0)
+                        {
+                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        }
+                    }
+                    queryDelete += string.Join(", ", values) + ")";
+                    using (var cmd = new MySqlCommand(queryDelete, connection))
+                    {
+                        if (filterIds != null && filterIds.Count() > 0)
+                        {
+                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        }
+                    }
+                }
+                return true;
+            }
+        }
+
+
+        public async Task<int> CreateDdoWiseDetail(SaveDdoWiseDetailModel model)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var ddoDetail = context.DdoWiseDetails.FirstOrDefault(x => x.Id == model.Id && x.UserId == model.UserId);
+                if (ddoDetail == null)
+                {
+                    ddoDetail = new DdoWiseDetail();
+                    ddoDetail.CreatedDate = DateTime.Now;
+                    ddoDetail.CreatedBy = model.UserId.Value;
+                }
+                else
+                {
+                    ddoDetail.UpdatedDate = DateTime.Now;
+                    ddoDetail.UpdatedBy = model.UserId.Value;
+                }
+                ddoDetail.TaxAmount = model.TaxAmount;
+                ddoDetail.TotalTds = model.TotalTds;
+                ddoDetail.Nature = model.Nature;
+                ddoDetail.AssesmentYear = model.AssesmentYear;
+                ddoDetail.FinancialYear = model.FinancialYear;
+                ddoDetail.Month = model.Month;
+                ddoDetail.DdoDetailId = model.DdoDetailId;
+                ddoDetail.UserId = model.UserId.Value;
+                if (ddoDetail.Id == 0)
+                    await context.DdoWiseDetails.AddAsync(ddoDetail);
+                else
+                    context.DdoWiseDetails.Update(ddoDetail);
+                await context.SaveChangesAsync();
+                return ddoDetail.Id;
+            }
+        }
+        public DdoWiseDetail GetDdoWiseDetail(int id, int userId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var detail = context.DdoWiseDetails.SingleOrDefault(p => p.Id == id && p.UserId == userId);
+                context.Dispose();
+                return detail;
+            }
+        }
+
+        public async Task<DdoWiseDetailResponseModel> GetDdoWiseDetailList(FilterModel model, int userId)
+        {
+            try
+            {
+                var models = new DdoWiseDetailResponseModel();
+                using (var context = new TaxAppContext())
+                {
+                    var response = await context.DdoWiseDetails.Where(p => p.UserId == userId && p.DdoDetailId == model.DdoDetailId).ToListAsync();
+                    models.TotalRows = response.Count();
+                    if (model != null && !String.IsNullOrEmpty(model.Search))
+                    {
+                        model.Search = model.Search.ToLower().Replace(" ", "");
+                        response = response.Where(e => e.Nature.ToLower().Replace(" ", "").Contains(model.Search)).ToList();
+                    }
+                    if (model != null && model.PageSize > 0)
+                    {
+                        models.DdoWiseDetailList = response.Skip((model.PageNumber - 1) * model.PageSize).Take(model.PageSize).ToList();
+                    }
+                    else
+                    {
+                        models.DdoWiseDetailList = response;
+                    }
+                    context.Dispose();
+                    return models;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public async Task<bool> DeleteSingleDdoWiseDetail(int id, int userId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var response = context.DdoWiseDetails.SingleOrDefault(p => p.Id == id && p.UserId == userId);
+                if (response != null)
+                {
+                    context.DdoWiseDetails.Remove(response);
+                    context.SaveChanges();
+                }
+                return true;
+            }
+        }
+
+        public async Task<bool> DeleteBulkDdoWiseDetail(List<int> ids, int userId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var filterIds = await context.DdoWiseDetails.Where(p => ids.Contains(p.Id) && p.UserId == userId).Select(p => p.Id).ToListAsync();
+                var values = new List<string>();
+                string queryDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
                 using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
                 {
                     connection.Open();
@@ -163,5 +328,32 @@ namespace TaxApp.BAL.Services
             }
         }
 
+
+        public async Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var filterIds = await context.DdoWiseDetails.Where(p => p.DdoDetailId == ddoId && p.UserId == userId).Select(p => p.Id).ToListAsync();
+                var values = new List<string>();
+                string queryDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
+                using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
+                {
+                    connection.Open();
+                    foreach (var cId in filterIds)
+                    {
+                        values.Add($"{cId}");
+                    }
+                    queryDelete += string.Join(", ", values) + ")";
+                    using (var cmd = new MySqlCommand(queryDelete, connection))
+                    {
+                        if (filterIds != null && filterIds.Count() > 0)
+                        {
+                            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                        }
+                    }
+                }
+                return true;
+            }
+        }
     }
 }

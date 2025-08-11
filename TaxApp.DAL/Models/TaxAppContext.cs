@@ -25,6 +25,7 @@ public partial class TaxAppContext : DbContext
     public virtual DbSet<Challan> ChallanList { get; set; }
     public virtual DbSet<Category> Categories { get; set; }
     public virtual DbSet<DdoDetails> DdoDetails { get; set; }
+    public virtual DbSet<DdoWiseDetail> DdoWiseDetails { get; set; }
     public virtual DbSet<SalaryDetail> SalaryDetail { get; set; }
     public virtual DbSet<Logs> Logs { get; set; }
     public virtual DbSet<DeducteeEntry> DeducteeEntry { get; set; }
@@ -120,6 +121,33 @@ public partial class TaxAppContext : DbContext
             entity.HasOne(d => d.Deductors).WithMany(p => p.DdoDetails)
                .HasForeignKey(d => d.DeductorId)
                .HasConstraintName("FK_deductors_ddodetails");
+        });
+        modelBuilder.Entity<DdoWiseDetail>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PRIMARY");
+            entity.ToTable("ddoWiseDetails");
+
+            entity.HasIndex(e => e.UserId, "FK_users_ddowise_idx");
+            entity.HasIndex(e => e.DdoDetailId, "FK_ddodetails_ddowise_idx");
+
+            entity.Property(e => e.TaxAmount).HasMaxLength(200);
+            entity.Property(e => e.TotalTds).HasMaxLength(45);
+            entity.Property(e => e.Nature).HasMaxLength(45);
+            entity.Property(e => e.DdoDetailId).HasMaxLength(50);
+            entity.Property(e => e.UserId).HasMaxLength(50);
+            entity.Property(e => e.CreatedDate).HasMaxLength(50);
+            entity.Property(e => e.UpdatedDate).HasMaxLength(10);
+            entity.Property(e => e.CreatedBy).HasMaxLength(2);
+            entity.Property(e => e.UpdatedBy).HasMaxLength(10);
+            entity.Property(e => e.AssesmentYear).HasMaxLength(10);
+            entity.Property(e => e.FinancialYear).HasMaxLength(10);
+            entity.Property(e => e.Month).HasMaxLength(10);
+            entity.HasOne(d => d.Users).WithMany(p => p.DdoWiseDetails)
+                .HasForeignKey(d => d.UserId)
+                .HasConstraintName("FK_users_ddodetails");
+            entity.HasOne(d => d.DdoDetails).WithMany(p => p.DdoWiseDetails)
+               .HasForeignKey(d => d.DdoDetailId)
+               .HasConstraintName("FK_ddodetails_ddowise");
         });
         modelBuilder.Entity<TdsReturn>(entity =>
         {

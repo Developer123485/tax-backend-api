@@ -83,5 +83,70 @@ namespace TaxAPI.Controllers
             var results = _ddoDetailsService.DeleteAllDdoDetails(Convert.ToInt32(userId), deductorId);
             return Ok(results);
         }
+
+
+        [HttpPost("fetch/ddoWiseDetails")]
+        public async Task<IActionResult> GetDdoWiseDetails([FromBody] FilterModel model)
+        {
+            var currentUser = HttpContext.User;
+            var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value;
+            var results = await _ddoDetailsService.GetDdoWiseDetailList(model, Convert.ToInt32(userId));
+            return Ok(results);
+        }
+
+        [HttpGet("ddoWiseDetails/{id}")]
+        public IActionResult GetDdoWiseDetail(int id)
+        {
+            var currentUser = HttpContext.User;
+            var userId = Convert.ToInt32(currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value);
+            var results = _ddoDetailsService.GetDdoWiseDetail(id, userId);
+            return Ok(results);
+        }
+
+        [HttpPost("ddoWiseDetails/create")]
+        public async Task<IActionResult> CreateDdoWiseDetail([FromBody] SaveDdoWiseDetailModel model)
+        {
+            try
+            {
+                int results;
+                var currentUser = HttpContext.User;
+                var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
+                model.UserId = Convert.ToInt32(userId);
+                results = await _ddoDetailsService.CreateDdoWiseDetail(model);
+                return Ok(results);
+            }
+            catch (Exception ex)
+            {
+                this.logger.LogInformation($"Error in Create Ddo Details  => {ex.Message}");
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet("delete/ddoWiseDetails/{id}")]
+        public IActionResult DeleteDdoWiseDetail(int id, int deductorId)
+        {
+            var currentUser = HttpContext.User;
+            var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
+            var results = _ddoDetailsService.DeleteSingleDdoWiseDetail(id, Convert.ToInt32(userId));
+            return Ok(results);
+        }
+
+        [HttpPost("deleteBulk/ddoWiseDetails")]
+        public IActionResult DeleteBulkDdoWiseDetail([FromBody] DeleteIdsFilter model, int deductorId)
+        {
+            var currentUser = HttpContext.User;
+            var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
+            var results = _ddoDetailsService.DeleteBulkDdoWiseDetail(model.Ids, Convert.ToInt32(userId));
+            return Ok(results);
+        }
+        [HttpGet("deleteAll/ddoWiseDetails/{ddoId}")]
+        public IActionResult DeleteAllDdoWiseDetail(int ddoId)
+        {
+            var currentUser = HttpContext.User;
+            var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
+            var results = _ddoDetailsService.DeleteAllDdoWiseDetails(Convert.ToInt32(userId), ddoId);
+            return Ok(results);
+        }
+
     }
 }
