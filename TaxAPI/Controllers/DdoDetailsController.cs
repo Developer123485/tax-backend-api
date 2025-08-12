@@ -77,7 +77,7 @@ namespace TaxAPI.Controllers
             return Ok(results);
         }
         [HttpGet("deleteAll/{deductorId}")]
-        public async IActionResult DeleteAllDdoDetail(int deductorId)
+        public async Task<IActionResult> DeleteAllDdoDetail(int deductorId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
