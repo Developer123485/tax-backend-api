@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using TaxAPI.Helpers;
 using TaxApp.BAL.Interface;
 using TaxApp.BAL.Models;
@@ -68,19 +69,19 @@ namespace TaxAPI.Controllers
         }
 
         [HttpPost("deleteBulk/{deductorId}")]
-        public IActionResult DeleteBulkDdoDetail([FromBody] DeleteIdsFilter model, int deductorId)
+        public async Task<IActionResult> DeleteBulkDdoDetail([FromBody] DeleteIdsFilter model, int deductorId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = _ddoDetailsService.DeleteBulkDdoDetail(model.Ids, Convert.ToInt32(userId), deductorId);
+            var results = await _ddoDetailsService.DeleteBulkDdoDetail(model.Ids, Convert.ToInt32(userId), deductorId);
             return Ok(results);
         }
         [HttpGet("deleteAll/{deductorId}")]
-        public IActionResult DeleteAllDdoDetail(int deductorId)
+        public async IActionResult DeleteAllDdoDetail(int deductorId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = _ddoDetailsService.DeleteAllDdoDetails(Convert.ToInt32(userId), deductorId);
+            var results = await _ddoDetailsService.DeleteAllDdoDetails(Convert.ToInt32(userId), deductorId);
             return Ok(results);
         }
 
@@ -123,28 +124,28 @@ namespace TaxAPI.Controllers
         }
 
         [HttpGet("delete/ddoWiseDetails/{id}")]
-        public IActionResult DeleteDdoWiseDetail(int id, int deductorId)
+        public async Task<IActionResult> DeleteDdoWiseDetail(int id, int deductorId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = _ddoDetailsService.DeleteSingleDdoWiseDetail(id, Convert.ToInt32(userId));
+            var results = await _ddoDetailsService.DeleteSingleDdoWiseDetail(id, Convert.ToInt32(userId));
             return Ok(results);
         }
 
         [HttpPost("deleteBulk/ddoWiseDetails")]
-        public IActionResult DeleteBulkDdoWiseDetail([FromBody] DeleteIdsFilter model, int deductorId)
+        public async Task<IActionResult> DeleteBulkDdoWiseDetail([FromBody] DeleteIdsFilter model, int deductorId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = _ddoDetailsService.DeleteBulkDdoWiseDetail(model.Ids, Convert.ToInt32(userId));
+            var results = await _ddoDetailsService.DeleteBulkDdoWiseDetail(model.Ids, Convert.ToInt32(userId));
             return Ok(results);
         }
         [HttpGet("deleteAll/ddoWiseDetails/{ddoId}")]
-        public IActionResult DeleteAllDdoWiseDetail(int ddoId)
+        public async Task<IActionResult> DeleteAllDdoWiseDetail(int ddoId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = _ddoDetailsService.DeleteAllDdoWiseDetails(Convert.ToInt32(userId), ddoId);
+            var results = await _ddoDetailsService.DeleteAllDdoWiseDetails(Convert.ToInt32(userId), ddoId);
             return Ok(results);
         }
 
