@@ -13,6 +13,7 @@ namespace TaxApp.BAL.Models
         public string? Search { get; set; }
         public string? FinancialYear { get; set; }
         public string? Quarter { get; set; }
+        public string? Month { get; set; }
         public string? FormType { get; set; }
         public int? DeductorId { get; set; }
         public int? DdoDetailId { get; set; }

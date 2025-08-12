@@ -262,21 +262,21 @@ namespace TaxApp.BAL.Services
                 var models = new DdoWiseDetailResponseModel();
                 using (var context = new TaxAppContext())
                 {
-                    var response = await context.DdoWiseDetails.Where(p => p.UserId == userId && p.DdoDetailId == model.DdoDetailId).ToListAsync();
+                    var response = from ddoDetail in context.DdoDetails.Where(p => p.DeductorId == model.DeductorId && p.UserId == userId)
+                                          join ddoWiseDetail in context.DdoWiseDetails
+                                          on ddoDetail.Id equals ddoWiseDetail.DdoDetailId
+                                          where ddoWiseDetail.DdoDetailId == model.DdoDetailId && ddoWiseDetail.FinancialYear == model.FinancialYear && ddoWiseDetail.Month == model.Month && ddoWiseDetail.UserId == userId
+                                          select new DdoWiseDetail()
+                                          {
+                                              Id = ddoWiseDetail.Id,
+                                              TaxAmount = ddoWiseDetail.TaxAmount,
+                                              TotalTds = ddoWiseDetail.TotalTds,
+                                              Nature = ddoWiseDetail.Nature,
+                                              Tan = ddoDetail.Tan,
+                                              Name = ddoDetail.Name,
+                                          };
                     models.TotalRows = response.Count();
-                    if (model != null && !String.IsNullOrEmpty(model.Search))
-                    {
-                        model.Search = model.Search.ToLower().Replace(" ", "");
-                        response = response.Where(e => e.Nature.ToLower().Replace(" ", "").Contains(model.Search)).ToList();
-                    }
-                    if (model != null && model.PageSize > 0)
-                    {
-                        models.DdoWiseDetailList = response.Skip((model.PageNumber - 1) * model.PageSize).Take(model.PageSize).ToList();
-                    }
-                    else
-                    {
-                        models.DdoWiseDetailList = response;
-                    }
+                    models.DdoWiseDetailList = response.Skip((model.PageNumber - 1) * model.PageSize).Take(model.PageSize).ToList();
                     context.Dispose();
                     return models;
                 }
