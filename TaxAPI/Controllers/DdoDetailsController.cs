@@ -60,11 +60,11 @@ namespace TaxAPI.Controllers
         }
 
         [HttpGet("delete/{id}/{deductorId}")]
-        public IActionResult DeleteDdoDetail(int id, int deductorId)
+        public async Task<IActionResult> DeleteDdoDetail(int id, int deductorId)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = _ddoDetailsService.DeleteSingleDdoDetail(id, Convert.ToInt32(userId), deductorId);
+            var results = await _ddoDetailsService.DeleteSingleDdoDetail(id, Convert.ToInt32(userId), deductorId);
             return Ok(results);
         }
 
