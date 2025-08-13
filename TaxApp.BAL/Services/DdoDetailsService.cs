@@ -386,12 +386,12 @@ namespace TaxApp.BAL.Services
             query += "^" + detail.City;
             query += "^" + detail.State;
             query += "^" + detail.Pincode;
-            query += "^" + item.TotalTds;
+            query += "^" + item.TaxAmount.ToString("F2");
             query += "^";
             query += "^" + detail.DdoRegNo;
             query += "^" + detail.DdoCode;
             query += "^" + detail.EmailID;
-            query += "^" + item.TaxAmount;
+            query += "^" + item.TotalTds.ToString("F2");
             query += "^" + nature;
             query += "^";
             query += "^";
