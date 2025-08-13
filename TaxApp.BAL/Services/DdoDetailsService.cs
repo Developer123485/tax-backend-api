@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TaxApp.BAL.Interface;
 using TaxApp.BAL.Models;
+using TaxApp.BAL.Utilities;
 using TaxApp.DAL.Models;
 
 namespace TaxApp.BAL.Services
@@ -263,18 +264,18 @@ namespace TaxApp.BAL.Services
                 using (var context = new TaxAppContext())
                 {
                     var response = from ddoDetail in context.DdoDetails.Where(p => p.DeductorId == model.DeductorId && p.UserId == userId)
-                                          join ddoWiseDetail in context.DdoWiseDetails
-                                          on ddoDetail.Id equals ddoWiseDetail.DdoDetailId
-                                          where ddoWiseDetail.DdoDetailId == model.DdoDetailId && ddoWiseDetail.FinancialYear == model.FinancialYear && ddoWiseDetail.Month == model.Month && ddoWiseDetail.UserId == userId
-                                          select new DdoWiseDetail()
-                                          {
-                                              Id = ddoWiseDetail.Id,
-                                              TaxAmount = ddoWiseDetail.TaxAmount,
-                                              TotalTds = ddoWiseDetail.TotalTds,
-                                              Nature = ddoWiseDetail.Nature,
-                                              Tan = ddoDetail.Tan,
-                                              Name = ddoDetail.Name,
-                                          };
+                                   join ddoWiseDetail in context.DdoWiseDetails
+                                   on ddoDetail.Id equals ddoWiseDetail.DdoDetailId
+                                   where ddoWiseDetail.DdoDetailId == model.DdoDetailId && ddoWiseDetail.FinancialYear == model.FinancialYear && ddoWiseDetail.Month == model.Month && ddoWiseDetail.UserId == userId
+                                   select new DdoWiseDetail()
+                                   {
+                                       Id = ddoWiseDetail.Id,
+                                       TaxAmount = ddoWiseDetail.TaxAmount,
+                                       TotalTds = ddoWiseDetail.TotalTds,
+                                       Nature = ddoWiseDetail.Nature,
+                                       Tan = ddoDetail.Tan,
+                                       Name = ddoDetail.Name,
+                                   };
                     models.TotalRows = response.Count();
                     models.DdoWiseDetailList = response.Skip((model.PageNumber - 1) * model.PageSize).Take(model.PageSize).ToList();
                     context.Dispose();
@@ -284,6 +285,16 @@ namespace TaxApp.BAL.Services
             catch (Exception ex)
             {
                 throw;
+            }
+        }
+
+        public async Task<List<DdoWiseDetail>> GetDdoWiseDetails(int ddoId, int userId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var list = await context.DdoWiseDetails.Where(p => p.DdoDetailId == ddoId && p.UserId == userId).ToListAsync();
+                context.Dispose();
+                return list;
             }
         }
 
@@ -354,6 +365,46 @@ namespace TaxApp.BAL.Services
                 }
                 return true;
             }
+        }
+
+        public string GetDDOBy24GQueryString(Deductor model, FormDashboardFilter mod, DdoDetails detail, DdoWiseDetail item, int serialNo, int ddoSerialNo)
+        {
+            var nature = Common.GetNature(item.Nature);
+            var query = "";
+            query += serialNo;
+            query += "^TD";
+            query += "^1";
+            query += "^";
+            query += "^" + ddoSerialNo;
+            query += "^";
+            query += "^" + detail.Tan.ToUpper();
+            query += "^" + detail.Name;
+            query += "^" + detail.Address1;
+            query += "^" + detail.Address2;
+            query += "^" + detail.Address3;
+            query += "^" + detail.Address4;
+            query += "^" + detail.City;
+            query += "^" + detail.State;
+            query += "^" + detail.Pincode;
+            query += "^" + item.TotalTds;
+            query += "^";
+            query += "^" + detail.DdoRegNo;
+            query += "^" + detail.DdoCode;
+            query += "^" + detail.EmailID;
+            query += "^" + item.TaxAmount;
+            query += "^" + nature;
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            return query;
         }
     }
 }

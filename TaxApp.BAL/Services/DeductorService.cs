@@ -651,28 +651,29 @@ namespace TaxApp.BAL.Services
         }
 
 
-        public string GetDeductorBy24GQueryString(Deductor model, FormDashboardFilter mod)
+        public string GetDeductorBy24GQueryString(Deductor model, FormDashboardFilter mod, DdoDetails detail)
         {
             int startYear = Common.GetStartYearFromFinancialYear(mod.FinancialYear);
             var query = "";
             query += 2;
             query += "^BH";
             query += "^1";
-            query += "^X";
+            query += "^";
             query += "^" + model.AinCode;
             query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
+            query += "^" + detail.Name;
+            query += "^" + detail.Address1;
+            query += "^" + detail.Address2;
+            query += "^" + detail.Address3;
+            query += "^" + detail.Address4;
+            query += "^" + detail.City;
+            query += "^" + detail.State;
+            query += "^" + detail.Pincode;
+            query += "^" + model.DeductorStdcode;
+            query += "^" + model.DeductorMobile;
+            query += "^" + model.DeductorEmailId;
             query += "^" + model.ResponsibleName;
-            query += "^";
+            query += "^" + model.ResponsibleDesignation;
             query += "^" + startYear;
             query += "^";
             query += "^" + model.DdoCode ?? "";
@@ -680,50 +681,51 @@ namespace TaxApp.BAL.Services
             query += "^";
             query += "^";
             query += "^";
+            query += "^" + detail.DdoWiseDetails.Count();
+            query += "^" + detail.DdoWiseDetails.Sum(p => p.TotalTds);
             query += "^";
             query += "^";
             query += "^";
             query += "^";
+            query += "^" + mod.Month;
+            query += "^" + model.ResponsibleStreet;
             query += "^";
             query += "^";
             query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
-            query += "^";
+            query += "^" + model.ResponsibleCity;
+            query += "^" + model.ResponsibleState;
+            query += "^" + model.ResponsiblePincode;
+            query += "^" + model.ResponsibleStdcode;
+            query += "^" + model.ResponsibleTelephone;
+            query += "^" + model.ResponsibleEmailId;
+            query += "^" + model.ResponsibleMobile;
             query += "^";
             query += "^" + model.MinistryState;
             query += "^" + model.MinistryName;
             query += "^" + model.MinistryNameOther;
             query += "^" + model.MinistryNameOther;
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
+            query += "^" + (detail.DdoWiseDetails.Where(p=> p.Nature == "TDS-Salary (24Q)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Salary (24Q)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Salary (24Q)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TCS (27EQ)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TCS (27EQ)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount) : "0.00");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TCS (27EQ)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds) : "0.00");
             query += "^" + model.PaoRegistration;
             query += "^0";
             query += "^0";
-            query += "^0";
-            query += "^0";
-            query += "^0";
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "A").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "U").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "D").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
             query += "^";
             query += "^";
             return query;
         }
+    
     }
 }

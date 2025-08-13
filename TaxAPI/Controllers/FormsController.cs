@@ -37,7 +37,8 @@ namespace TaxAPI.Controllers
         public ISalaryDetailService _salaryDetailService;
         public IFormValidationService _formValidationService;
         public IEmployeeService _employeeService;
-        public FormsController(IEmployeeService employeeService, IFormService formService, IDeducteeService deducteeService, IChallanService challanService, ILogger<AuthController> logger, IUploadFile uploadFile, IDeductorService deductorService, IDeducteeEntryService deducteeEntryService, ISalaryDetailService salaryDetailService, IFormValidationService formValidationService)
+        public IDdoDetailsService _ddoService;
+        public FormsController(IDdoDetailsService ddoService, IEmployeeService employeeService, IFormService formService, IDeducteeService deducteeService, IChallanService challanService, ILogger<AuthController> logger, IUploadFile uploadFile, IDeductorService deductorService, IDeducteeEntryService deducteeEntryService, ISalaryDetailService salaryDetailService, IFormValidationService formValidationService)
         {
             _formService = formService;
             _deducteeService = deducteeService;
@@ -49,6 +50,7 @@ namespace TaxAPI.Controllers
             _salaryDetailService = salaryDetailService;
             _formValidationService = formValidationService;
             _employeeService = employeeService;
+            _ddoService = ddoService;
         }
         [HttpPost("fetch")]
         public async Task<IActionResult> GetFormDashbooard([FromBody] FormDashboardFilter model)
@@ -1896,18 +1898,29 @@ namespace TaxAPI.Controllers
             try
             {
                 var currentUser = HttpContext.User;
+                dynamic ddoId = model.DdoId;
                 var userId = Convert.ToInt32(currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value);
                 Deductor obj = new Deductor();
+                DdoDetails ddoDetail = new DdoDetails();
                 StringBuilder csvContent = new StringBuilder();
                 obj = _deductorService.GetDeductor(model.DeductorId, Convert.ToInt32(userId));
+                ddoDetail = _ddoService.GetDdoDetail(ddoId, Convert.ToInt32(userId));
+                ddoDetail.DdoWiseDetails = await _ddoService.GetDdoWiseDetails(ddoDetail.Id, Convert.ToInt32(userId))
                 if (obj != null && obj.Id > 0)
                 {
                     var currentDate = DateTime.Now.ToString("ddMMyyyy");
                     var index = 1;
                     var fileType = "24G";
                     csvContent.AppendLine(index + "^FH^" + fileType + "^" + currentDate + "^C^D^" + obj.AinCode + "^1^^^^^^^");
-                    string deductorDetail = _deductorService.GetDeductorBy24GQueryString(obj, model);
+                    string deductorDetail = _deductorService.GetDeductorBy24GQueryString(obj, model, ddoDetail);
                     csvContent.AppendLine(deductorDetail);
+                    var serialNo = 3;
+                    var ddoSerialNo = 1;
+                    foreach (var item in ddoDetail.DdoWiseDetails)
+                    {
+                        var entryDetail = _ddoService.GetDDOBy24GQueryString(obj, model, ddoDetail, item, serialNo++, ddoSerialNo++);
+                        csvContent.AppendLine(entryDetail);
+                    }
                 }
                 var fileContent = Encoding.UTF8.GetBytes(csvContent.ToString());
                 var fileName = "24G" + ".txt";

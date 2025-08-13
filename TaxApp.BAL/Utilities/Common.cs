@@ -109,12 +109,26 @@ namespace TaxApp.BAL.Utilities
             return year;
         }
 
+        public static string GetNature(string value)
+        {
+            var nature = "";
+            if (value == "TDS-Non-Salary (26Q)")
+                nature = "26Q";
+            if (value == "TDS-Salary (24Q)")
+                nature = "24Q";
+            if (value == "TDS-Non-Resident (27Q)")
+                nature = "27Q";
+            if (value == "TCS (27EQ)")
+                nature = "27EQ";
+            return nature;
+        }
+
         public static bool getLastDateOfMonth(DateTime date)
         {
             DateTime lastDayOfMonth = new DateTime(date.Year, date.Month, 1).AddMonths(1).AddDays(-1);
 
             // Check if the given date is the same as the last day of the month
-            if(date.Date == lastDayOfMonth.Date)
+            if (date.Date == lastDayOfMonth.Date)
             {
                 return true;
             }

@@ -13,7 +13,9 @@ namespace TaxApp.BAL.Models
         public string? FinancialYear { get; set; }
         public string? AssesmentYear { get; set; }
         public int CategoryId { get; set; }
+        public int? DdoId { get; set; }
         public string? Quarter { get; set; }
+        public string? Month { get; set; }
         public string? Form { get; set; }
         public string? PartType { get; set; }
         public string? DownloadType { get; set; }
