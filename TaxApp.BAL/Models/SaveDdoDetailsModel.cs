@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,9 @@ namespace TaxApp.BAL.Models
         public string? EmailID { get; set; }
         public string? DdoRegNo { get; set; }
         public string? DdoCode { get; set; }
+        public decimal? TaxAmount { get; set; }
+        public decimal? TotalTds { get; set; }
+        public string? Nature { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
         public int? CreatedBy { get; set; }

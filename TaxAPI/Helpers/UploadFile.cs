@@ -481,6 +481,56 @@ namespace TaxAPI.Helpers
             return challans;
         }
 
+        public async Task<List<SaveDdoDetailsModel>> GetDDODetailsListFromExcel(IFormFile file, string Path, string type)
+        {
+            var ddoDetails = new List<SaveDdoDetailsModel>();
+            if (file.FileName != null)
+            {
+                FileStream stream = File.Open(Path, FileMode.OpenOrCreate);
+                System.Text.Encoding.RegisterProvider(System.Text.CodePagesEncodingProvider.Instance);
+                IExcelDataReader reader = ExcelReaderFactory.CreateReader(stream);
+                DataSet dataset = reader.AsDataSet(new ExcelDataSetConfiguration()
+                {
+                    UseColumnDataType = false,
+                    ConfigureDataTable = (IExcelDataReader tableReader) => new ExcelDataTableConfiguration()
+                    {
+                        UseHeaderRow = true
+                    }
+                });
+                System.Data.DataTable dt = dataset.Tables[1];
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (!String.IsNullOrEmpty(dt.Rows[i][0].ToString()) || !String.IsNullOrWhiteSpace(dt.Rows[i][0].ToString()))
+                    {
+                        dynamic date = "";
+                        var ddoDetail = new SaveDdoDetailsModel()
+                        {
+                            Tan = dt.Rows[i][0].ToString(),
+                            Name = dt.Rows[i][1].ToString(),
+                            DdoRegNo = dt.Rows[i][2].ToString(),
+                            DdoCode = dt.Rows[i][3].ToString(),
+                            Address1 = dt.Rows[i][4].ToString(),
+                            Address2 = dt.Rows[i][5].ToString(),
+                            Address3 = dt.Rows[i][6].ToString(),
+                            Address4 = dt.Rows[i][7].ToString(),
+                            City = dt.Rows[i][8].ToString(),
+                            State = Helper.GetEnumMemberValueByDescription<State>(dt.Rows[i][9].ToString()),
+                            Pincode = dt.Rows[i][10].ToString(),
+                            EmailID = dt.Rows[i][11].ToString()
+                        };
+                        if (type == "2")
+                        {
+                            ddoDetail.TaxAmount = !String.IsNullOrEmpty(dt.Rows[i][12].ToString()) ? Convert.ToDecimal(dt.Rows[i][12].ToString()) : 0;
+                            ddoDetail.TotalTds = !String.IsNullOrEmpty(dt.Rows[i][13].ToString()) ? Convert.ToDecimal(dt.Rows[i][13].ToString()) : 0;
+                            ddoDetail.Nature = dt.Rows[i][14].ToString();
+                        }
+                        ddoDetails.Add(ddoDetail);
+                    }
+                }
+            }
+            return ddoDetails;
+        }
+
         public async Task<List<DeducteeEntry>> GetDeducteeEntryByChallanIdFromExcel(IFormFile file, string Path, int catId)
         {
             var DedcuteeEntrys = new List<DeducteeEntry>();

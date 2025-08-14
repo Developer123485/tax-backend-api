@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using TaxApp.BAL.Interface;
 using TaxApp.BAL.Models;
 using TaxApp.BAL.Utilities;
 using TaxApp.DAL.Models;
+using static TaxApp.BAL.Models.EnumModel;
 
 namespace TaxApp.BAL.Services
 {
@@ -256,6 +258,141 @@ namespace TaxApp.BAL.Services
             }
         }
 
+        public async Task<bool> CreateDDODetailList(List<SaveDdoDetailsModel> itemDetail, int dedId, int userId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var models = new List<SaveDdoDetailsModel>();
+                string[] specialPanNumbers = { "TANINVALID", "TANNOTABVL", "TANAPPLIED" };
+                var uniqueRows = itemDetail.GroupBy(p => specialPanNumbers.Contains(p.Tan) ? $"{p.Name} {p.Tan}" : (p.Tan)).Select(g => g.First()).ToList();
+                var ddoDetailList = context.DdoDetails.Where(o => o.UserId == userId && o.DeductorId == dedId).ToList();
+                foreach (var item in uniqueRows)
+                {
+                    if (item.Tan == "TANINVALID" || item.Tan == "TANNOTABVL" || item.Tan == "TANAPPLIED")
+                    {
+                        if (ddoDetailList.SingleOrDefault(o => o.Tan == item.Tan && o.Name == item.Name) == null)
+                        {
+                            models.Add(item);
+                        }
+                    }
+                    else
+                    {
+                        if (ddoDetailList.SingleOrDefault(o => o.Tan == item.Tan) == null)
+                        {
+                            models.Add(item);
+                        }
+                    }
+                }
+                StringBuilder sql = new StringBuilder();
+                sql.Append("insert into ddoDetails (Name,Tan, Address1, Address2, Address3, Address4, City, State,Pincode, EmailID, DdoRegNo, DdoCode, DeductorId, UserId, CreatedDate, UpdatedDate, CreatedBy, UpdatedBy)  values ");
+
+                for (int i = 0; i < models.Count; i++)
+                {
+                    sql.Append("(@Name" + i + ",@Tan" + i + ",@Address1" + i + ", @Address2" + i + ", @Address3" + i + ", @Address4" + i + ", @City" + i + ",@State" + i + ", @Pincode" + i + ",@EmailID" + i + ", @DdoRegNo" + i + ", @DdoCode" + i + ", @DeductorId" + i + ", @UserId" + i + ",@CreatedDate" + i + ", @UpdatedDate" + i + ",@CreatedBy" + i + ", @UpdatedBy" + i + ")"); ;
+                    if (i < models.Count - 1)
+                    {
+                        sql.Append(", ");
+                    }
+                }
+                using (MySqlConnection connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
+                {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(sql.ToString(), connection))
+                    {
+                        for (int i = 0; i < models.Count; i++)
+                        {
+                            command.Parameters.AddWithValue("@Name" + i, models[i].Name);
+                            command.Parameters.AddWithValue("@Tan" + i, models[i].Tan);
+                            command.Parameters.AddWithValue("@Address1" + i, models[i].Address1);
+                            command.Parameters.AddWithValue("@Address2" + i, models[i].Address2);
+                            command.Parameters.AddWithValue("@Address3" + i, models[i].Address3);
+                            command.Parameters.AddWithValue("@Address4" + i, models[i].Address4);
+                            command.Parameters.AddWithValue("@City" + i, models[i].City);
+                            command.Parameters.AddWithValue("@State" + i, models[i].State);
+                            command.Parameters.AddWithValue("@Pincode" + i, models[i].Pincode);
+                            command.Parameters.AddWithValue("@EmailID" + i, models[i].EmailID);
+                            command.Parameters.AddWithValue("@DdoRegNo" + i, models[i].DdoRegNo);
+                            command.Parameters.AddWithValue("@DdoCode" + i, models[i].DdoCode);
+                            command.Parameters.AddWithValue("@DeductorId" + i, dedId);
+                            command.Parameters.AddWithValue("@UserId" + i, userId);
+                            command.Parameters.AddWithValue("@CreatedDate" + i, DateTime.UtcNow);
+                            command.Parameters.AddWithValue("@CreatedBy" + i, userId);
+                        }
+                        await command.ExecuteNonQueryAsync();
+                    }
+                }
+            }
+            return true;
+        }
+
+        public async Task<bool> CreateDDOWiseDetailList(List<SaveDdoDetailsModel> itemDetail, int dedId, int userId, string financialYear, string month)
+        {
+            var ddoWiseList = new List<SaveDdoWiseDetailModel>();
+            using (var context = new TaxAppContext())
+            {
+                var ddoDetails = context.DdoDetails.Where(o => o.UserId == userId && o.DeductorId == dedId).ToList();
+
+                for (int i = 0; i < itemDetail.Count; i++)
+                {
+                    if (itemDetail[i].Tan == "TANINVALID" || itemDetail[i].Tan == "TANINVALID" || itemDetail[i].Tan == "TANNOTAVBL")
+                    {
+                        var ddoWiseDetai = new SaveDdoWiseDetailModel();
+                        ddoWiseDetai.TaxAmount = itemDetail[i].TaxAmount.Value;
+                        ddoWiseDetai.TotalTds = itemDetail[i].TotalTds.Value;
+                        ddoWiseDetai.Nature = itemDetail[i].Nature;
+                        ddoWiseDetai.DdoDetailId = ddoDetails.Find(p => p.Name == itemDetail[i].Name && p.Tan == itemDetail[i].Tan).Id;
+                        ddoWiseList.Add(ddoWiseDetai);
+                    }
+                    else
+                    {
+                        var ddoWiseDetai = new SaveDdoWiseDetailModel();
+                        ddoWiseDetai.TaxAmount = itemDetail[i].TaxAmount.Value;
+                        ddoWiseDetai.TotalTds = itemDetail[i].TotalTds.Value;
+                        ddoWiseDetai.Nature = itemDetail[i].Nature;
+                        ddoWiseDetai.DdoDetailId = ddoDetails.Find(p => p.Tan == itemDetail[i].Tan).Id;
+                        ddoWiseList.Add(ddoWiseDetai);
+                    }
+                }
+
+                StringBuilder sql = new StringBuilder();
+                sql.Append("insert into ddoWiseDetails (TaxAmount,TotalTds, Nature, DdoDetailId, UserId, CreatedDate, UpdatedDate, CreatedBy, UpdatedBy,FinancialYear,Month)  values ");
+
+                for (int i = 0; i < ddoWiseList.Count; i++)
+                {
+                    sql.Append("(@TaxAmount" + i + ",@TotalTds" + i + ",@Nature" + i + ", @DdoDetailId" + i + ", @UserId" + i + ",@CreatedDate" + i + ", @UpdatedDate" + i + ",@CreatedBy" + i + ", @UpdatedBy" + i + ", @FinancialYear" + i + ", @Month" + i + ")"); ;
+                    if (i < ddoWiseList.Count - 1)
+                    {
+                        sql.Append(", ");
+                    }
+                }
+                using (MySqlConnection connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
+                {
+                    connection.Open();
+                    using (MySqlCommand command = new MySqlCommand(sql.ToString(), connection))
+                    {
+                        for (int i = 0; i < ddoWiseList.Count; i++)
+                        {
+                            command.Parameters.AddWithValue("@TaxAmount" + i, ddoWiseList[i].TaxAmount);
+                            command.Parameters.AddWithValue("@TotalTds" + i, ddoWiseList[i].TotalTds);
+                            command.Parameters.AddWithValue("@Nature" + i, ddoWiseList[i].Nature);
+                            command.Parameters.AddWithValue("@DdoDetailId" + i, ddoWiseList[i].DdoDetailId);
+                            command.Parameters.AddWithValue("@UserId" + i, userId);
+                            command.Parameters.AddWithValue("@FinancialYear" + i, financialYear);
+                            command.Parameters.AddWithValue("@Month" + i, month);
+                            command.Parameters.AddWithValue("@DeductorId" + i, dedId);
+                            command.Parameters.AddWithValue("@UserId" + i, userId);
+                            command.Parameters.AddWithValue("@CreatedDate" + i, DateTime.UtcNow);
+                            command.Parameters.AddWithValue("@CreatedBy" + i, userId);
+                        }
+                        await command.ExecuteNonQueryAsync();
+                    }
+                }
+            }
+            return true;
+        }
+
+
+
         public async Task<DdoWiseDetailResponseModel> GetDdoWiseDetailList(FilterModel model, int userId)
         {
             try
@@ -340,11 +477,11 @@ namespace TaxApp.BAL.Services
         }
 
 
-        public async Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId)
+        public async Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId, string financialYear, string month)
         {
             using (var context = new TaxAppContext())
             {
-                var filterIds = await context.DdoWiseDetails.Where(p => p.DdoDetailId == ddoId && p.UserId == userId).Select(p => p.Id).ToListAsync();
+                var filterIds = await context.DdoWiseDetails.Where(p => p.DdoDetailId == ddoId && p.UserId == userId && p.FinancialYear == financialYear && p.Month == month).Select(p => p.Id).ToListAsync();
                 var values = new List<string>();
                 string queryDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
                 using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))

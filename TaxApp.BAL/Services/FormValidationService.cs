@@ -30,6 +30,11 @@ namespace TaxApp.BAL.Services
             _27QValidationService = validation27QService;
             _27EQValidationService = validation27EQService;
         }
+
+        public async Task<FileValidation> CheckDDOValidations(List<SaveDdoDetailsModel> deductors)
+        {
+            return null;
+        }
         public async Task<FileValidation> CheckDeductorsValidations(List<DeductorSaveModel> deductors)
         {
             FileValidation models = new FileValidation();

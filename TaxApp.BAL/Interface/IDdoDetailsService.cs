@@ -22,8 +22,10 @@ namespace TaxApp.BAL.Interface
         Task<List<DdoWiseDetail>> GetDdoWiseDetails(int ddoId, int userId);
         DdoWiseDetail GetDdoWiseDetail(int id, int userId);
         Task<bool> DeleteBulkDdoWiseDetail(List<int> ids, int userId);
+        Task<bool> CreateDDODetailList(List<SaveDdoDetailsModel> itemDetail, int dedId, int userId);
+        Task<bool> CreateDDOWiseDetailList(List<SaveDdoDetailsModel> itemDetail,int ddoId, int userId, string financialYear, string month);
         Task<bool> DeleteSingleDdoWiseDetail(int id, int userId);
-        Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId);
+        Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId, string financialYear, string month);
         string GetDDOBy24GQueryString(Deductor model, FormDashboardFilter mod, DdoDetails detail, DdoWiseDetail item,int serialNo, int ddoSerialNo);
     }
 }

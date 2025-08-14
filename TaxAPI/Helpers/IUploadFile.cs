@@ -18,6 +18,7 @@ namespace TaxAPI.Helpers
         Task<List<SaveSalaryPerksModel>> GetUploadSalaryPerks(IFormFile file, string Path, int userId);
         Task<List<Challan>> GetChallanListFromExcel(IFormFile file, string Path, int catId);
         Task<List<DeducteeEntry>> GetDeducteeEntryByChallanIdFromExcel(IFormFile file, string Path, int catId);
+        Task<List<SaveDdoDetailsModel>> GetDDODetailsListFromExcel(IFormFile file, string Path, string type);
         bool DeleteFiles(string Path);
         Task<DeductorSaveModel> ReadTxtFile(string filePath);
     }
