@@ -37,4 +37,10 @@ namespace TaxApp.DAL.Models
         public int TotalRows { get; set; }
         public List<DdoDetails> DdoDetailList { get; set; }
     }
+
+    public class DdoDropdown
+    {
+        public string Value { get; set; }
+        public int Key { get; set; }
+    }
 }

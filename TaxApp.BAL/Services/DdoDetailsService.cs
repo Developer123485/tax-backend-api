@@ -64,6 +64,21 @@ namespace TaxApp.BAL.Services
             }
         }
 
+        public async Task<List<DdoDropdown>> GetDdoDropdowns(int deductId, int userId)
+        {
+            var response = new List<DdoDropdown>();
+            using (var context = new TaxAppContext())
+            {
+                response = await context.DdoDetails.Where(p => p.DeductorId == deductId && p.UserId == userId).Select(p => new DdoDropdown()
+                {
+                    Value = p.Name + " - " + p.Tan,
+                    Key = p.Id
+                }).ToListAsync();
+                context.Dispose();
+                return response;
+            }
+        }
+
         public async Task<DdoDetailResponseModel> GetDdoDetailList(FilterModel model, int userId)
         {
             try
@@ -239,6 +254,7 @@ namespace TaxApp.BAL.Services
                 ddoDetail.FinancialYear = model.FinancialYear;
                 ddoDetail.Month = model.Month;
                 ddoDetail.DdoDetailId = model.DdoDetailId;
+                ddoDetail.DeductorId = model.DeductorId;
                 ddoDetail.UserId = model.UserId.Value;
                 if (ddoDetail.Id == 0)
                     await context.DdoWiseDetails.AddAsync(ddoDetail);
@@ -355,11 +371,11 @@ namespace TaxApp.BAL.Services
                 }
 
                 StringBuilder sql = new StringBuilder();
-                sql.Append("insert into ddoWiseDetails (TaxAmount,TotalTds, Nature, DdoDetailId, UserId, CreatedDate, CreatedBy, FinancialYear,Month)  values ");
+                sql.Append("insert into ddoWiseDetails (TaxAmount,TotalTds, Nature, DdoDetailId, UserId, CreatedDate, CreatedBy, FinancialYear,Month, DeductorId)  values ");
 
                 for (int i = 0; i < ddoWiseList.Count; i++)
                 {
-                    sql.Append("(@TaxAmount" + i + ",@TotalTds" + i + ",@Nature" + i + ", @DdoDetailId" + i + ", @UserId" + i + ",@CreatedDate" + i + ",@CreatedBy" + i + ", @FinancialYear" + i + ", @Month" + i + ")"); ;
+                    sql.Append("(@TaxAmount" + i + ",@TotalTds" + i + ",@Nature" + i + ", @DdoDetailId" + i + ", @UserId" + i + ",@CreatedDate" + i + ",@CreatedBy" + i + ", @FinancialYear" + i + ", @Month" + i + ", @DeductorId" + i + ")"); ;
                     if (i < ddoWiseList.Count - 1)
                     {
                         sql.Append(", ");
@@ -383,6 +399,7 @@ namespace TaxApp.BAL.Services
                             command.Parameters.AddWithValue("@UserId" + i, userId);
                             command.Parameters.AddWithValue("@CreatedDate" + i, DateTime.UtcNow);
                             command.Parameters.AddWithValue("@CreatedBy" + i, userId);
+                            command.Parameters.AddWithValue("@DeductorId" + i, userId);
                         }
                         await command.ExecuteNonQueryAsync();
                     }

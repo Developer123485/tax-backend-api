@@ -14,6 +14,7 @@ namespace TaxApp.BAL.Models
         public string Nature { get; set; }
         public int? UserId { get; set; }
         public int? DdoDetailId { get; set; }
+        public int? DeductorId { get; set; }
         public string AssesmentYear { get; set; }
         public string FinancialYear { get; set; }
         public string Month { get; set; }

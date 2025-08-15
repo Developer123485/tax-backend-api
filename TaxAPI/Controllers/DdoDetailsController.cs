@@ -102,6 +102,15 @@ namespace TaxAPI.Controllers
             return Ok(results);
         }
 
+        [HttpGet("ddoDropdowns/{deductorId}")]
+        public async Task<IActionResult> GetDdoDropdowns(int deductorId)
+        {
+            var currentUser = HttpContext.User;
+            var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value;
+            var results = await _ddoDetailsService.GetDdoDropdowns(deductorId, Convert.ToInt32(userId));
+            return Ok(results);
+        }
+
         [HttpGet("ddoWiseDetails/{id}")]
         public IActionResult GetDdoWiseDetail(int id)
         {
@@ -148,7 +157,7 @@ namespace TaxAPI.Controllers
             return Ok(results);
         }
         [HttpGet("deleteAll/ddoWiseDetails/{deductorId}/{fy}/{month}")]
-        public async Task<IActionResult> DeleteAllDdoWiseDetail(string fy, string month)
+        public async Task<IActionResult> DeleteAllDdoWiseDetail(int deductorId, string fy, string month)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
@@ -239,7 +248,7 @@ namespace TaxAPI.Controllers
                                                 ddoDetail.DdoCode = ddoEnt.DdoCode;
                                                 ddoList.Add(ddoDetail);
 
-                                               
+
                                             }
                                             await _ddoDetailsService.DeleteAllDdoWiseDetails(1, Convert.ToInt32(userId), fy, month);
                                             await _ddoDetailsService.CreateDDODetailList(ddoList, deductorId, Convert.ToInt32(userId));

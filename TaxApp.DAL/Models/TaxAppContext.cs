@@ -129,6 +129,7 @@ public partial class TaxAppContext : DbContext
 
             entity.HasIndex(e => e.UserId, "FK_users_ddowise_idx");
             entity.HasIndex(e => e.DdoDetailId, "FK_ddodetails_ddowise_idx");
+            entity.HasIndex(e => e.DeductorId, "FK_deductors_ddowise_idx");
 
             entity.Property(e => e.TaxAmount).HasMaxLength(200);
             entity.Property(e => e.TotalTds).HasMaxLength(45);
@@ -148,6 +149,9 @@ public partial class TaxAppContext : DbContext
             entity.HasOne(d => d.DdoDetails).WithMany(p => p.DdoWiseDetails)
                .HasForeignKey(d => d.DdoDetailId)
                .HasConstraintName("FK_ddodetails_ddowise");
+            entity.HasOne(d => d.Deductors).WithMany(p => p.DdoWiseDetails)
+               .HasForeignKey(d => d.DeductorId)
+               .HasConstraintName("FK_deductors_ddowise");
         });
         modelBuilder.Entity<TdsReturn>(entity =>
         {
