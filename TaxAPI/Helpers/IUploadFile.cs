@@ -13,7 +13,7 @@ namespace TaxAPI.Helpers
         Task<List<ReturnFillingDueDatesSaveModel>> GetReturnFillingDueDateData(IFormFile file, string path);
         Task<List<EmployeeSaveModel>> UploadEmployeeFile(IFormFile file, string path);
         Task<DataTable> GetDataTabletFromCSVFile(string path);
-        Task<List<Deductor>> GetCompanyDetail(IFormFile file, string Path);
+        Task<List<Deductor>> GetCompanyDetail(IFormFile file, string Path, string type = null);
         Task<List<SalaryDetail>> GetUploadSalaryDeatil(IFormFile file, string Path, FormDashboardFilter model, int userId);
         Task<List<SaveSalaryPerksModel>> GetUploadSalaryPerks(IFormFile file, string Path, int userId);
         Task<List<Challan>> GetChallanListFromExcel(IFormFile file, string Path, int catId);

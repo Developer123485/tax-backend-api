@@ -156,8 +156,8 @@ namespace TaxAPI.Controllers
             return Ok(results);
         }
 
-        [HttpPost("uploadDDODetailExcelFile/{deductorId}/{type}/{isFormValidation}/{ddoId}/{fy}/{month}")]
-        public async Task<IActionResult> UploadExcelFile(IFormFile file, int deductorId, string type, bool isFormValidation, int? ddoId, string? fy, string? month)
+        [HttpPost("uploadDDODetailExcelFile/{deductorId}/{type}/{isFormValidation}/{fy}/{month}")]
+        public async Task<IActionResult> UploadExcelFile(IFormFile file, int deductorId, string type, bool isFormValidation, string? fy, string? month)
         {
             try
             {
@@ -179,7 +179,7 @@ namespace TaxAPI.Controllers
                     }
                     if (file.FileName.ToLower().Contains(value: ".xlsx") || file.FileName.ToLower().Contains(value: ".xls"))
                     {
-                        comapnys = await _uploadFile.GetCompanyDetail(file, companyFilePath);
+                        comapnys = await _uploadFile.GetCompanyDetail(file, companyFilePath, type);
                     }
                     else
                     {
@@ -241,7 +241,7 @@ namespace TaxAPI.Controllers
 
                                                
                                             }
-                                            await _ddoDetailsService.DeleteAllDdoWiseDetails(ddoId.Value, Convert.ToInt32(userId), fy, month);
+                                            await _ddoDetailsService.DeleteAllDdoWiseDetails(1, Convert.ToInt32(userId), fy, month);
                                             await _ddoDetailsService.CreateDDODetailList(ddoList, deductorId, Convert.ToInt32(userId));
                                             await _ddoDetailsService.CreateDDOWiseDetailList(ddoDetails, deductorId, Convert.ToInt32(userId), fy, month);
                                         }

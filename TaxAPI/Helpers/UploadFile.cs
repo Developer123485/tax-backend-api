@@ -1293,7 +1293,7 @@ namespace TaxAPI.Helpers
             return deductor;
         }
 
-        public async Task<List<Deductor>> GetCompanyDetail(IFormFile file, string Path)
+        public async Task<List<Deductor>> GetCompanyDetail(IFormFile file, string Path, string type = null)
         {
             var companys = new List<Deductor>();
 
@@ -1313,7 +1313,7 @@ namespace TaxAPI.Helpers
                 });
                 DataTable dt = dataset.Tables[0];
 
-                string text = dt.Rows[0][4].ToString();
+                string text = (type != "1" && type != "2") ? dt.Rows[0][4].ToString(): dt.Rows[0][3].ToString();
                 for (int i = 1; i < dt.Rows.Count; i++)
                 {
                     if (!String.IsNullOrEmpty(dt.Rows[1][0].ToString()))

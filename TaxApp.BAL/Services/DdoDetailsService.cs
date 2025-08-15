@@ -284,11 +284,11 @@ namespace TaxApp.BAL.Services
                     }
                 }
                 StringBuilder sql = new StringBuilder();
-                sql.Append("insert into ddoDetails (Name,Tan, Address1, Address2, Address3, Address4, City, State,Pincode, EmailID, DdoRegNo, DdoCode, DeductorId, UserId, CreatedDate, UpdatedDate, CreatedBy, UpdatedBy)  values ");
+                sql.Append("insert into ddoDetails (Name,Tan, Address1, Address2, Address3, Address4, City, State,Pincode, EmailID, DdoRegNo, DdoCode, DeductorId, UserId, CreatedDate, CreatedBy)  values ");
 
                 for (int i = 0; i < models.Count; i++)
                 {
-                    sql.Append("(@Name" + i + ",@Tan" + i + ",@Address1" + i + ", @Address2" + i + ", @Address3" + i + ", @Address4" + i + ", @City" + i + ",@State" + i + ", @Pincode" + i + ",@EmailID" + i + ", @DdoRegNo" + i + ", @DdoCode" + i + ", @DeductorId" + i + ", @UserId" + i + ",@CreatedDate" + i + ", @UpdatedDate" + i + ",@CreatedBy" + i + ", @UpdatedBy" + i + ")"); ;
+                    sql.Append("(@Name" + i + ",@Tan" + i + ",@Address1" + i + ", @Address2" + i + ", @Address3" + i + ", @Address4" + i + ", @City" + i + ",@State" + i + ", @Pincode" + i + ",@EmailID" + i + ", @DdoRegNo" + i + ", @DdoCode" + i + ", @DeductorId" + i + ", @UserId" + i + ",@CreatedDate" + i + ",@CreatedBy" + i + ")"); ;
                     if (i < models.Count - 1)
                     {
                         sql.Append(", ");
@@ -355,11 +355,11 @@ namespace TaxApp.BAL.Services
                 }
 
                 StringBuilder sql = new StringBuilder();
-                sql.Append("insert into ddoWiseDetails (TaxAmount,TotalTds, Nature, DdoDetailId, UserId, CreatedDate, UpdatedDate, CreatedBy, UpdatedBy,FinancialYear,Month)  values ");
+                sql.Append("insert into ddoWiseDetails (TaxAmount,TotalTds, Nature, DdoDetailId, UserId, CreatedDate, CreatedBy, FinancialYear,Month)  values ");
 
                 for (int i = 0; i < ddoWiseList.Count; i++)
                 {
-                    sql.Append("(@TaxAmount" + i + ",@TotalTds" + i + ",@Nature" + i + ", @DdoDetailId" + i + ", @UserId" + i + ",@CreatedDate" + i + ", @UpdatedDate" + i + ",@CreatedBy" + i + ", @UpdatedBy" + i + ", @FinancialYear" + i + ", @Month" + i + ")"); ;
+                    sql.Append("(@TaxAmount" + i + ",@TotalTds" + i + ",@Nature" + i + ", @DdoDetailId" + i + ", @UserId" + i + ",@CreatedDate" + i + ",@CreatedBy" + i + ", @FinancialYear" + i + ", @Month" + i + ")"); ;
                     if (i < ddoWiseList.Count - 1)
                     {
                         sql.Append(", ");
