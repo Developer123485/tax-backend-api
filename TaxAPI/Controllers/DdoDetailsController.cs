@@ -147,12 +147,12 @@ namespace TaxAPI.Controllers
             var results = await _ddoDetailsService.DeleteBulkDdoWiseDetail(model.Ids, Convert.ToInt32(userId));
             return Ok(results);
         }
-        [HttpGet("deleteAll/ddoWiseDetails/{ddoId}/{fy}/{month}")]
-        public async Task<IActionResult> DeleteAllDdoWiseDetail(int ddoId, string fy, string month)
+        [HttpGet("deleteAll/ddoWiseDetails/{deductorId}/{fy}/{month}")]
+        public async Task<IActionResult> DeleteAllDdoWiseDetail(string fy, string month)
         {
             var currentUser = HttpContext.User;
             var userId = currentUser.Claims.FirstOrDefault(c => c.Type == "Ids").Value;
-            var results = await _ddoDetailsService.DeleteAllDdoWiseDetails(Convert.ToInt32(userId), ddoId, fy, month);
+            var results = await _ddoDetailsService.DeleteAllDdoWiseDetails(Convert.ToInt32(userId), deductorId, fy, month);
             return Ok(results);
         }
 

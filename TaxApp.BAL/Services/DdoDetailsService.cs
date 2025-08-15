@@ -403,7 +403,7 @@ namespace TaxApp.BAL.Services
                     var response = from ddoDetail in context.DdoDetails.Where(p => p.DeductorId == model.DeductorId && p.UserId == userId)
                                    join ddoWiseDetail in context.DdoWiseDetails
                                    on ddoDetail.Id equals ddoWiseDetail.DdoDetailId
-                                   where ddoWiseDetail.DdoDetailId == model.DdoDetailId && ddoWiseDetail.FinancialYear == model.FinancialYear && ddoWiseDetail.Month == model.Month && ddoWiseDetail.UserId == userId
+                                   where ddoWiseDetail.DeductorId == model.DeductorId && ddoWiseDetail.FinancialYear == model.FinancialYear && ddoWiseDetail.Month == model.Month && ddoWiseDetail.UserId == userId
                                    select new DdoWiseDetail()
                                    {
                                        Id = ddoWiseDetail.Id,
@@ -425,11 +425,11 @@ namespace TaxApp.BAL.Services
             }
         }
 
-        public async Task<List<DdoWiseDetail>> GetDdoWiseDetails(int ddoId, int userId)
+        public async Task<List<DdoWiseDetail>> GetDdoWiseDetails(int deduId, int userId)
         {
             using (var context = new TaxAppContext())
             {
-                var list = await context.DdoWiseDetails.Where(p => p.DdoDetailId == ddoId && p.UserId == userId).ToListAsync();
+                var list = await context.DdoWiseDetails.Where(p => p.DeductorId == deduId && p.UserId == userId).ToListAsync();
                 context.Dispose();
                 return list;
             }
@@ -477,11 +477,11 @@ namespace TaxApp.BAL.Services
         }
 
 
-        public async Task<bool> DeleteAllDdoWiseDetails(int userId, int ddoId, string financialYear, string month)
+        public async Task<bool> DeleteAllDdoWiseDetails(int userId, int deductorId, string financialYear, string month)
         {
             using (var context = new TaxAppContext())
             {
-                var filterIds = await context.DdoWiseDetails.Where(p => p.DdoDetailId == ddoId && p.UserId == userId && p.FinancialYear == financialYear && p.Month == month).Select(p => p.Id).ToListAsync();
+                var filterIds = await context.DdoWiseDetails.Where(p => p.DeductorId == deductorId && p.UserId == userId && p.FinancialYear == financialYear && p.Month == month).Select(p => p.Id).ToListAsync();
                 var values = new List<string>();
                 string queryDelete = "DELETE FROM ddoWiseDetails WHERE Id IN (";
                 using (var connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))

@@ -21,6 +21,7 @@ namespace TaxApp.DAL.Models
         public string Tan { get; set; }
         public string Month { get; set; }
         public int? UserId { get; set; }
+        public int? DeductorId { get; set; }
         public int? DdoDetailId { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? UpdatedDate { get; set; }
@@ -28,6 +29,7 @@ namespace TaxApp.DAL.Models
         public int? UpdatedBy { get; set; }
         public virtual DdoDetails? DdoDetails { get; set; }
         public virtual User? Users { get; set; }
+        public virtual Deductor? Deductors { get; set; }
     }
     public class DdoWiseDetailResponseModel
     {

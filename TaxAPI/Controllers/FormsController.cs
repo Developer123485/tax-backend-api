@@ -1905,7 +1905,7 @@ namespace TaxAPI.Controllers
                 StringBuilder csvContent = new StringBuilder();
                 obj = _deductorService.GetDeductor(model.DeductorId, Convert.ToInt32(userId));
                 ddoDetail = _ddoService.GetDdoDetail(ddoId, Convert.ToInt32(userId));
-                ddoDetail.DdoWiseDetails = await _ddoService.GetDdoWiseDetails(ddoDetail.Id, Convert.ToInt32(userId));
+                ddoDetail.DdoWiseDetails = await _ddoService.GetDdoWiseDetails(model.DeductorId, Convert.ToInt32(userId));
                 if (obj != null && obj.Id > 0)
                 {
                     var currentDate = DateTime.Now.ToString("ddMMyyyy");
