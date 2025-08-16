@@ -1904,7 +1904,7 @@ namespace TaxAPI.Controllers
                 StringBuilder csvContent = new StringBuilder();
                 obj = _deductorService.GetDeductor(model.DeductorId, Convert.ToInt32(userId));
                 List<DdoDetails> ddoDetailList = await _ddoService.GetDdoDetails(model.DeductorId, Convert.ToInt32(userId));
-                var ddoWiseDetails = await _ddoService.GetDdoWiseDetails(model.DeductorId, Convert.ToInt32(userId));
+                var ddoWiseDetails = await _ddoService.GetDdoWiseDetails(model.DeductorId, Convert.ToInt32(userId), model.FinancialYear, model.Month);
                 if (obj != null && obj.Id > 0)
                 {
                     var currentDate = DateTime.Now.ToString("ddMMyyyy");
@@ -1919,8 +1919,11 @@ namespace TaxAPI.Controllers
                     {
                         DdoDetails ddoDetail = new DdoDetails();
                         ddoDetail = ddoDetailList.Find(p => p.Id == item.DdoDetailId);
-                        var entryDetail = _ddoService.GetDDOBy24GQueryString(obj, model, ddoDetail, item, serialNo++, ddoSerialNo++);
-                        csvContent.AppendLine(entryDetail);
+                        if (ddoDetail != null)
+                        {
+                            var entryDetail = _ddoService.GetDDOBy24GQueryString(obj, model, ddoDetail, item, serialNo++, ddoSerialNo++);
+                            csvContent.AppendLine(entryDetail);
+                        }
                     }
                 }
                 var fileContent = Encoding.UTF8.GetBytes(csvContent.ToString());

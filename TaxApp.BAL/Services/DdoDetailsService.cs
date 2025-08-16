@@ -452,11 +452,11 @@ namespace TaxApp.BAL.Services
             }
         }
 
-        public async Task<List<DdoWiseDetail>> GetDdoWiseDetails(int deduId, int userId)
+        public async Task<List<DdoWiseDetail>> GetDdoWiseDetails(int deduId, int userId, string fy, string m)
         {
             using (var context = new TaxAppContext())
             {
-                var list = await context.DdoWiseDetails.Where(p => p.DeductorId == deduId && p.UserId == userId).ToListAsync();
+                var list = await context.DdoWiseDetails.Where(p => p.DeductorId == deduId && p.UserId == userId && p.FinancialYear == fy && p.Month == m).ToListAsync();
                 context.Dispose();
                 return list;
             }
