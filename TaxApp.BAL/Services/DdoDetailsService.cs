@@ -320,31 +320,33 @@ namespace TaxApp.BAL.Services
                         sql.Append(", ");
                     }
                 }
-                using (MySqlConnection connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
-                {
-                    connection.Open();
-                    using (MySqlCommand command = new MySqlCommand(sql.ToString(), connection))
+                if(models.Count > 0) {
+                    using (MySqlConnection connection = new MySqlConnection("server=139.84.144.29;port=3306;database=taxvahan;uid=admin;pwd=TsgF%$23434R;DefaultCommandTimeout=300;"))
                     {
-                        for (int i = 0; i < models.Count; i++)
+                        connection.Open();
+                        using (MySqlCommand command = new MySqlCommand(sql.ToString(), connection))
                         {
-                            command.Parameters.AddWithValue("@Name" + i, models[i].Name);
-                            command.Parameters.AddWithValue("@Tan" + i, models[i].Tan);
-                            command.Parameters.AddWithValue("@Address1" + i, models[i].Address1);
-                            command.Parameters.AddWithValue("@Address2" + i, models[i].Address2);
-                            command.Parameters.AddWithValue("@Address3" + i, models[i].Address3);
-                            command.Parameters.AddWithValue("@Address4" + i, models[i].Address4);
-                            command.Parameters.AddWithValue("@City" + i, models[i].City);
-                            command.Parameters.AddWithValue("@State" + i, models[i].State);
-                            command.Parameters.AddWithValue("@Pincode" + i, models[i].Pincode);
-                            command.Parameters.AddWithValue("@EmailID" + i, models[i].EmailID);
-                            command.Parameters.AddWithValue("@DdoRegNo" + i, models[i].DdoRegNo);
-                            command.Parameters.AddWithValue("@DdoCode" + i, models[i].DdoCode);
-                            command.Parameters.AddWithValue("@DeductorId" + i, dedId);
-                            command.Parameters.AddWithValue("@UserId" + i, userId);
-                            command.Parameters.AddWithValue("@CreatedDate" + i, DateTime.UtcNow);
-                            command.Parameters.AddWithValue("@CreatedBy" + i, userId);
+                            for (int i = 0; i < models.Count; i++)
+                            {
+                                command.Parameters.AddWithValue("@Name" + i, models[i].Name);
+                                command.Parameters.AddWithValue("@Tan" + i, models[i].Tan);
+                                command.Parameters.AddWithValue("@Address1" + i, models[i].Address1);
+                                command.Parameters.AddWithValue("@Address2" + i, models[i].Address2);
+                                command.Parameters.AddWithValue("@Address3" + i, models[i].Address3);
+                                command.Parameters.AddWithValue("@Address4" + i, models[i].Address4);
+                                command.Parameters.AddWithValue("@City" + i, models[i].City);
+                                command.Parameters.AddWithValue("@State" + i, models[i].State);
+                                command.Parameters.AddWithValue("@Pincode" + i, models[i].Pincode);
+                                command.Parameters.AddWithValue("@EmailID" + i, models[i].EmailID);
+                                command.Parameters.AddWithValue("@DdoRegNo" + i, models[i].DdoRegNo);
+                                command.Parameters.AddWithValue("@DdoCode" + i, models[i].DdoCode);
+                                command.Parameters.AddWithValue("@DeductorId" + i, dedId);
+                                command.Parameters.AddWithValue("@UserId" + i, userId);
+                                command.Parameters.AddWithValue("@CreatedDate" + i, DateTime.UtcNow);
+                                command.Parameters.AddWithValue("@CreatedBy" + i, userId);
+                            }
+                            await command.ExecuteNonQueryAsync();
                         }
-                        await command.ExecuteNonQueryAsync();
                     }
                 }
             }
@@ -406,10 +408,8 @@ namespace TaxApp.BAL.Services
                             command.Parameters.AddWithValue("@FinancialYear" + i, financialYear);
                             command.Parameters.AddWithValue("@Month" + i, month);
                             command.Parameters.AddWithValue("@DeductorId" + i, dedId);
-                            command.Parameters.AddWithValue("@UserId" + i, userId);
                             command.Parameters.AddWithValue("@CreatedDate" + i, DateTime.UtcNow);
                             command.Parameters.AddWithValue("@CreatedBy" + i, userId);
-                            command.Parameters.AddWithValue("@DeductorId" + i, userId);
                         }
                         await command.ExecuteNonQueryAsync();
                     }
