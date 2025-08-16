@@ -31,9 +31,119 @@ namespace TaxApp.BAL.Services
             _27EQValidationService = validation27EQService;
         }
 
-        public async Task<FileValidation> CheckDDOValidations(List<SaveDdoDetailsModel> deductors)
+        public async Task<FileValidation> CheckDDOValidations(List<SaveDdoDetailsModel> ddoDetails, string type)
         {
-            return null;
+            FileValidation models = new FileValidation();
+            StringBuilder csvContent = new StringBuilder();
+            int deductorIndex = 2;
+            if (type == "1")
+            {
+                csvContent.AppendLine($"Invalid DDO Details. Please correct the following errors:");
+                foreach (var item in ddoDetails)
+                {
+                    var errorIndex = deductorIndex++;
+                    var regexItem = new Regex("^[a-zA-Z]*$");
+                    if (String.IsNullOrEmpty(item.Tan))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Master Tan is Required");
+                        models.IsValidation = true;
+                    }
+                    if (!String.IsNullOrEmpty(item.Tan) && item.Tan.Length != 10)
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - Mention the 10 Character TAN of the DDO Master");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.Name))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Name is Required");
+                        models.IsValidation = true;
+                    }
+
+                    if (String.IsNullOrEmpty(item.Address1))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Address1 is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.City))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO City is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.Pincode))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Pincode is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.State))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO State is Required");
+                        models.IsValidation = true;
+                    }
+                }
+            }
+            if (type == "2")
+            {
+                csvContent.AppendLine($"Invalid DDO details and ddo Wise Details. Please correct the following errors:");
+                foreach (var item in ddoDetails)
+                {
+                    var errorIndex = deductorIndex++;
+                    var regexItem = new Regex("^[a-zA-Z]*$");
+                    if (String.IsNullOrEmpty(item.Tan))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Master Tan is Required");
+                        models.IsValidation = true;
+                    }
+                    if (!String.IsNullOrEmpty(item.Tan) && item.Tan.Length != 10)
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - Mention the 10 Character TAN of the DDO Master");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.Name))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Name is Required");
+                        models.IsValidation = true;
+                    }
+
+                    if (String.IsNullOrEmpty(item.Address1))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Address1 is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.City))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO City is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.Pincode))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Pincode is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.State))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO State is Required");
+                        models.IsValidation = true;
+                    }
+                    if (item.TaxAmount == null)
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Details Wise Tax Amount  is Required");
+                        models.IsValidation = true;
+                    }
+                    if (item.TotalTds == null)
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO Details Wise Total Tds  is Required");
+                        models.IsValidation = true;
+                    }
+                    if (String.IsNullOrEmpty(item.Nature))
+                    {
+                        csvContent.AppendLine($"Row {errorIndex} - DDO detail wise Nature is Required");
+                        models.IsValidation = true;
+                    }
+                }
+            }
+
+            models.CSVContent = csvContent;
+            return models;
         }
         public async Task<FileValidation> CheckDeductorsValidations(List<DeductorSaveModel> deductors)
         {
@@ -287,7 +397,7 @@ namespace TaxApp.BAL.Services
             }
             if (catId == 1)
             {
-                models = await _24ValidationService.Check24QChallanValidation(challans, deducteeDetails,salaryDetails, catId, model, userId, models, isValidateReturn);
+                models = await _24ValidationService.Check24QChallanValidation(challans, deducteeDetails, salaryDetails, catId, model, userId, models, isValidateReturn);
             }
             return models;
         }

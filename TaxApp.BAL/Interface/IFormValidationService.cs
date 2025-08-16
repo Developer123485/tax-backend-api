@@ -11,7 +11,7 @@ namespace TaxApp.BAL.Interface
     public interface IFormValidationService
     {
         Task<FileValidation> CheckDeductorsValidations(List<DeductorSaveModel> deductors);
-        Task<FileValidation> CheckDDOValidations(List<SaveDdoDetailsModel> details);
+        Task<FileValidation> CheckDDOValidations(List<SaveDdoDetailsModel> details, string type);
         Task<FileValidation> CheckChallanAndDeducteeEntryValidations(List<Challan> challans, List<DeducteeEntry> deducteeDetails, List<SalaryDetail> salaryDetails, int catId, FormDashboardFilter model, string userId, bool isValidateReturn = false);
     }
 }

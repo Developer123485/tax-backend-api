@@ -217,10 +217,10 @@ namespace TaxAPI.Controllers
                                 {
                                     FileValidation validationResponse = null;
                                     if (isFormValidation == true && ddoDetails != null)
-                                        validationResponse = await _formValidationService.CheckDDOValidations(ddoDetails);
+                                        validationResponse = await _formValidationService.CheckDDOValidations(ddoDetails, type);
                                     if (validationResponse != null && validationResponse.IsValidation == true)
                                     {
-                                        var fileName = "ChallanErrors_" + DateTime.Now.ToString() + ".txt";
+                                        var fileName = "DDODetailsErrors_" + DateTime.Now.ToString() + ".txt";
                                         return File(new System.Text.UTF8Encoding().GetBytes(validationResponse.CSVContent.ToString()), "text/txt", fileName);
                                     }
                                     else
@@ -247,15 +247,11 @@ namespace TaxAPI.Controllers
                                                 ddoDetail.DdoRegNo = ddoEnt.DdoRegNo;
                                                 ddoDetail.DdoCode = ddoEnt.DdoCode;
                                                 ddoList.Add(ddoDetail);
-
-
                                             }
                                             await _ddoDetailsService.DeleteAllDdoWiseDetails(1, Convert.ToInt32(userId), fy, month);
                                             await _ddoDetailsService.CreateDDODetailList(ddoList, deductorId, Convert.ToInt32(userId));
                                             await _ddoDetailsService.CreateDDOWiseDetailList(ddoDetails, deductorId, Convert.ToInt32(userId), fy, month);
                                         }
-                                        //_uploadFile.DeleteFiles(challanFilePath);
-                                        //_uploadFile.DeleteFiles(deducteeFilePath);
                                     }
                                 }
                             }
