@@ -20,6 +20,7 @@ namespace TaxApp.BAL.Interface
         Task<int> CreateDdoWiseDetail(SaveDdoWiseDetailModel model);
         Task<DdoWiseDetailResponseModel> GetDdoWiseDetailList(FilterModel model, int userId);
         Task<List<DdoWiseDetail>> GetDdoWiseDetails(int ddoId, int userId);
+        Task<List<DdoDetails>> GetDdoDetails(int ddoId, int userId);
         DdoWiseDetail GetDdoWiseDetail(int id, int userId);
         Task<bool> DeleteBulkDdoWiseDetail(List<int> ids, int userId);
         Task<bool> CreateDDODetailList(List<SaveDdoDetailsModel> itemDetail, int dedId, int userId);

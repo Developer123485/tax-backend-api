@@ -651,7 +651,7 @@ namespace TaxApp.BAL.Services
         }
 
 
-        public string GetDeductorBy24GQueryString(Deductor model, FormDashboardFilter mod, DdoDetails detail)
+        public string GetDeductorBy24GQueryString(Deductor model, FormDashboardFilter mod, List<DdoWiseDetail> detail)
         {
             int startYear = Common.GetStartYearFromFinancialYear(mod.FinancialYear);
             var query = "";
@@ -661,14 +661,14 @@ namespace TaxApp.BAL.Services
             query += "^";
             query += "^" + model.AinCode;
             query += "^";
-            query += "^" + detail.Name;
-            query += "^" + detail.Address1;
-            query += "^" + detail.Address2;
-            query += "^" + detail.Address3;
-            query += "^" + detail.Address4;
-            query += "^" + detail.City;
-            query += "^" + detail.State;
-            query += "^" + detail.Pincode;
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
+            query += "^";
             query += "^" + model.DeductorStdcode;
             query += "^" + model.DeductorMobile;
             query += "^" + model.DeductorEmailId;
@@ -681,8 +681,8 @@ namespace TaxApp.BAL.Services
             query += "^";
             query += "^";
             query += "^";
-            query += "^" + detail.DdoWiseDetails.Count();
-            query += "^" + detail.DdoWiseDetails.Sum(p => p.TotalTds);
+            query += "^" + detail.Count();
+            query += "^" + detail.Sum(p => p.TotalTds);
             query += "^";
             query += "^";
             query += "^";
@@ -704,24 +704,24 @@ namespace TaxApp.BAL.Services
             query += "^" + model.MinistryName;
             query += "^" + model.MinistryNameOther;
             query += "^" + model.MinistryNameOther;
-            query += "^" + (detail.DdoWiseDetails.Where(p=> p.Nature == "TDS-Salary (24Q)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Salary (24Q)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Salary (24Q)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TCS (27EQ)").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TCS (27EQ)").Sum(p => p.TaxAmount) > 0 ? detail.DdoWiseDetails.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "TCS (27EQ)").Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p=> p.Nature == "TDS-Salary (24Q)").Count() > 0 ? detail.Count() : "0");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Salary (24Q)").Sum(p => p.TaxAmount) > 0 ? detail.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Salary (24Q)").Sum(p => p.TotalTds) > 0 ? detail.Sum(p => p.TotalTds).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Count() > 0 ? detail.Count() : "0");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Sum(p => p.TaxAmount) > 0 ? detail.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Non-Salary (26Q)").Sum(p => p.TotalTds) > 0 ? detail.Sum(p => p.TotalTds).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Count() > 0 ? detail.Count() : "0");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Sum(p => p.TaxAmount) > 0 ? detail.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TDS-Non-Resident (27Q)").Sum(p => p.TotalTds) > 0 ? detail.Sum(p => p.TotalTds).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TCS (27EQ)").Count() > 0 ? detail.Count() : "0");
+            query += "^" + (detail.Where(p => p.Nature == "TCS (27EQ)").Sum(p => p.TaxAmount) > 0 ? detail.Sum(p => p.TaxAmount).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "TCS (27EQ)").Sum(p => p.TotalTds) > 0 ? detail.Sum(p => p.TotalTds).ToString("F2") : "0.00");
             query += "^" + model.PaoRegistration;
             query += "^0";
-            query += "^" + (detail.DdoWiseDetails.Sum(p => p.TotalTds) > 0 ? detail.DdoWiseDetails.Sum(p => p.TotalTds).ToString("F2") : "0.00");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "A").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "U").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
-            query += "^" + (detail.DdoWiseDetails.Where(p => p.Nature == "D").Count() > 0 ? detail.DdoWiseDetails.Count() : "0");
+            query += "^" + (detail.Sum(p => p.TotalTds) > 0 ? detail.Sum(p => p.TotalTds).ToString("F2") : "0.00");
+            query += "^" + (detail.Where(p => p.Nature == "A").Count() > 0 ? detail.Count() : "0");
+            query += "^" + (detail.Where(p => p.Nature == "U").Count() > 0 ? detail.Count() : "0");
+            query += "^" + (detail.Where(p => p.Nature == "D").Count() > 0 ? detail.Count() : "0");
             query += "^";
             query += "^";
             return query;

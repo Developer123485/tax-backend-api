@@ -79,6 +79,16 @@ namespace TaxApp.BAL.Services
             }
         }
 
+        public async Task<List<DdoDetails>> GetDdoDetails(int deductId, int userId)
+        {
+            using (var context = new TaxAppContext())
+            {
+                var response = await context.DdoDetails.Where(p => p.DeductorId == deductId && p.UserId == userId).ToListAsync();
+                context.Dispose();
+                return response;
+            }
+        }
+
         public async Task<DdoDetailResponseModel> GetDdoDetailList(FilterModel model, int userId)
         {
             try

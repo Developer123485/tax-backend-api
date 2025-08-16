@@ -1901,23 +1901,24 @@ namespace TaxAPI.Controllers
                 dynamic ddoId = model.DdoId;
                 var userId = Convert.ToInt32(currentUser.Claims.FirstOrDefault(c => c.Type == "Ids")?.Value);
                 Deductor obj = new Deductor();
-                DdoDetails ddoDetail = new DdoDetails();
                 StringBuilder csvContent = new StringBuilder();
                 obj = _deductorService.GetDeductor(model.DeductorId, Convert.ToInt32(userId));
-                ddoDetail = _ddoService.GetDdoDetail(ddoId, Convert.ToInt32(userId));
-                ddoDetail.DdoWiseDetails = await _ddoService.GetDdoWiseDetails(model.DeductorId, Convert.ToInt32(userId));
+                List<DdoDetails> ddoDetailList = await _ddoService.GetDdoDetails(model.DeductorId, Convert.ToInt32(userId));
+                var ddoWiseDetails = await _ddoService.GetDdoWiseDetails(model.DeductorId, Convert.ToInt32(userId));
                 if (obj != null && obj.Id > 0)
                 {
                     var currentDate = DateTime.Now.ToString("ddMMyyyy");
                     var index = 1;
                     var fileType = "24G";
                     csvContent.AppendLine(index + "^FH^" + fileType + "^" + currentDate + "^C^D^" + obj.AinCode + "^1^^^^^^^");
-                    string deductorDetail = _deductorService.GetDeductorBy24GQueryString(obj, model, ddoDetail);
+                    string deductorDetail = _deductorService.GetDeductorBy24GQueryString(obj, model, ddoWiseDetails);
                     csvContent.AppendLine(deductorDetail);
                     var serialNo = 3;
                     var ddoSerialNo = 1;
-                    foreach (var item in ddoDetail.DdoWiseDetails)
+                    foreach (var item in ddoWiseDetails)
                     {
+                        DdoDetails ddoDetail = new DdoDetails();
+                        ddoDetail = ddoDetailList.Find(p => p.Id == item.DdoDetailId);
                         var entryDetail = _ddoService.GetDDOBy24GQueryString(obj, model, ddoDetail, item, serialNo++, ddoSerialNo++);
                         csvContent.AppendLine(entryDetail);
                     }
