@@ -524,8 +524,8 @@ namespace TaxAPI.Controllers
         {
             var process = new Process();
             process.StartInfo.WorkingDirectory = utilityDir;
-            process.StartInfo.FileName = "java";
-            process.StartInfo.Arguments = $"-jar \"{Path.GetFileName(jarPath)}\"";
+            process.StartInfo.FileName = "bash";
+            process.StartInfo.Arguments = $"-c \"xvfb-run -a java -jar \"{Path.GetFileName(jarPath)}\"";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
