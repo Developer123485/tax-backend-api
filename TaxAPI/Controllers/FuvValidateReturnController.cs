@@ -490,25 +490,34 @@ namespace TaxAPI.Controllers
         [HttpGet("start-validation")]
         public async Task<IActionResult> StartValidation(string filePath, string csiFilePath, string outputPath)
         {
-            string relativePath = Path.Combine("UploadedFiles", "TDS_STANDALONE_FVU_9.2", "TDS_STANDALONE_FVU_9.2.jar");
-            string jarPath = Path.Combine(_env.ContentRootPath, relativePath);
-            string utilityDir = Path.GetDirectoryName(jarPath);
-
-            if (!System.IO.File.Exists(jarPath))
+            try
             {
-                return NotFound(new { error = "JAR file not found." });
+                string relativePath = Path.Combine("UploadedFiles", "TDS_STANDALONE_FVU_9.2", "TDS_STANDALONE_FVU_9.2.jar");
+                string jarPath = Path.Combine(_env.ContentRootPath, relativePath);
+                string utilityDir = Path.GetDirectoryName(jarPath);
+
+                if (!System.IO.File.Exists(jarPath))
+                {
+                    return NotFound(new { error = "JAR file not found." });
+                }
+                string input1 = filePath;
+                string input2 = csiFilePath;
+                string output = outputPath;
+                // Run in background to avoid blocking the API
+                new Thread(() =>
+                {
+                    RunJavaGuiUtility(jarPath, utilityDir);
+                    AutoFillForm(input1, input2, output);
+                }).Start();
+
+                return Ok(new { status = "Validation process started" });
             }
-            string input1 = filePath;
-            string input2 = csiFilePath;
-            string output = outputPath;
-            // Run in background to avoid blocking the API
-            new Thread(() =>
+            catch (Exception e)
             {
-                RunJavaGuiUtility(jarPath, utilityDir);
-                AutoFillForm(input1, input2, output);
-            }).Start();
-
-            return Ok(new { status = "Validation process started" });
+                this.logger.LogInformation($"Error In Upload File  => {e.Message}");
+                return BadRequest(e.Message);
+            }
+           
         }
 
         private void RunJavaGuiUtility(string jarPath, string utilityDir)
