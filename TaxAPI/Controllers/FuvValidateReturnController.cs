@@ -524,19 +524,13 @@ namespace TaxAPI.Controllers
         {
             var process = new Process();
             process.StartInfo.WorkingDirectory = utilityDir;
-            process.StartInfo.FileName = "xvfb-run";
-            process.StartInfo.Arguments = $"java -jar \"{Path.GetFileName(jarPath)}\"";
+            process.StartInfo.FileName = "java";
+            process.StartInfo.Arguments = $"-jar \"{Path.GetFileName(jarPath)}\"";
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardError = true;
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.CreateNoWindow = true;
-
-            process.OutputDataReceived += (s, e) => Console.WriteLine($"[OUT] {e.Data}");
-            process.ErrorDataReceived += (s, e) => Console.WriteLine($"[ERR] {e.Data}");
-
             process.Start();
-            process.BeginOutputReadLine();
-            process.BeginErrorReadLine();
         }
 
         private void AutoFillForm(string input1, string input2, string output)
