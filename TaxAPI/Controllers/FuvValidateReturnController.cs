@@ -500,15 +500,12 @@ namespace TaxAPI.Controllers
                 {
                     return NotFound(new { error = "JAR file not found." });
                 }
-                string input1 = filePath;
-                string input2 = csiFilePath;
-                string output = outputPath;
-                // Run in background to avoid blocking the API
-                new Thread(() =>
-                {
-                    RunJavaGuiUtility(jarPath, utilityDir);
-                    AutoFillForm(input1, input2, output);
-                }).Start();
+                var process = new Process();
+                process.StartInfo.FileName = "java";
+                process.StartInfo.Arguments = $"-jar \"{jarPath}\"";
+                process.StartInfo.WorkingDirectory = utilityDir;
+                process.StartInfo.UseShellExecute = true; // ✅ Required for GUI access
+                process.Start();
 
                 return Ok(new { status = "Validation process started" });
             }
